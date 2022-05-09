@@ -3,7 +3,7 @@
 		<section class="flex_header margins">
             <!--Article which displays the main title, which is an "a" clickable tag that redirects to the home page-->
             <article>
-                <a href="home.html"><h1 id="mainTitle">OpenEvents</h1></a>
+                <router-link to="/home"><h1 id="mainTitle">OpenEvents</h1></router-link>
             </article>
             <!--Article which displays the navigation bar with the sections of the OpenEvents' website-->
             <article>
@@ -51,3 +51,14 @@
 		name: 'HeaderHeader',
 	}
 </script>
+
+<style scoped>
+
+    #mainTitle {
+        color: #D9E7FDFF;
+        font-weight: bolder;
+        letter-spacing: 0.05em;
+        text-shadow: 5px 3px 2px #3c5373, 6px 4px 5px #1e2538, 8px 5px 15px #ffffff;
+    }
+
+</style>
