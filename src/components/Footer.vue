@@ -25,3 +25,5 @@
 		name: 'FooterFooter',
 	}
 </script>
+<style scoped>
+</style>

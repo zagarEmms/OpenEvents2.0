@@ -1,15 +1,15 @@
 <template>
-	<HeaderHeader/>
-	<FooterFooter/>
+	<HeaderHeader v-show="$route.path != '/index'"/>
+    <router-view />
+    <FooterFooter v-show="$route.path != '/index'"/>
 </template>
-
 <script>
+    import HeaderHeader from '@/components/Header.vue'
+    import FooterFooter from '@/components/Footer.vue'
 
-	import HeaderHeader from '@/components/Header.vue'
-	import FooterFooter from '@/components/Footer.vue'
 
 	export default {
-		name: 'HomeView',
+		name: 'HeaderFooter',
 		components: {
 			HeaderHeader,
 			FooterFooter
@@ -19,12 +19,12 @@
 </script>
 
 <style>
-
-.container {
-  width: 100%;
-}
   
-    :root {
+.container {
+    width: 100%;
+}
+
+:root {
     --footer-height: 50px;
     --footer-padding: 10px;
 }
@@ -37,18 +37,6 @@ body {
     font-family: "Helvetica", sans-serif ;
     font-weight: lighter;
     line-height: 1em;
-}
-
-#mainTitle {
-    color: #D9E7FDFF;
-    font-weight: bolder;
-    letter-spacing: 0.05em;
-    text-shadow: 5px 3px 2px #3c5373, 6px 4px 5px #1e2538, 8px 5px 15px #ffffff;
-}
-
-#home_background{
-    background: #eef3f8;
-    background: linear-gradient(60deg, #bfbaff 0%, #ecedfd 70%);
 }
 
 a {
@@ -272,38 +260,6 @@ a {
         border-radius: 9px;
     }
 
-    .flex_login form, article{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .backgroundImg{
-        background-image: url("assets/images/purple_background.jpg");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-        padding-bottom: 70px;
-        padding-top: 30px;
-    }
-
-    .flex_signup form{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-
-    .input_box input{
-        font-size: 3rem;
-        margin-bottom: 3rem;
-        width: 30rem;
-        box-shadow:5px 5px 10px rgba(48, 68, 94, 0.35);
-        border-radius: 10px;
-        padding: 8px 20px;
-        border: none;
-    }
-
     .star-container {
         display: flex;
         align-items: flex-start;
@@ -334,54 +290,6 @@ a {
         opacity: 1;
     }
 
-    .indexInput {
-        padding-left: 20px;
-    }
-
-    .buttonLogIn {
-        background: #283d8f;
-        border-radius: 999px;
-        box-shadow: #283d8f 0 10px 20px -10px;
-        box-sizing: border-box;
-        color: #E8EEFFFF;
-        font-size: 2.5rem;
-        font-weight: 700;
-        line-height: 4rem;
-        opacity: 1;
-        outline: 0 solid transparent;
-        padding: 10px 20px;
-        user-select: none;
-        touch-action: manipulation;
-        border: 0;
-    }
-
-    .buttonLogIn:hover {
-        background: #E8EEFFFF;
-        color: #0d213a;
-    }
-
-    .buttonSignUp {
-        background: rgb(168, 190, 218);
-        border-radius: 999px;
-        box-shadow: rgb(168, 190, 218) 0 10px 20px -10px;
-        box-sizing: border-box;
-        color: #15263a;
-        font-size: 2.5rem;
-        font-weight: 700;
-        line-height: 4rem;
-        opacity: 1;
-        outline: 0 solid transparent;
-        padding: 10px 20px;
-        user-select: none;
-        touch-action: manipulation;
-        border: 0;
-    }
-
-    .buttonSignUp:hover {
-        background: rgb(1, 25, 54);
-        color: rgb(168, 190, 218);
-    }
-
     footer {
         background: #011936;
     }
@@ -409,55 +317,6 @@ a {
     .inlineNav a:hover{
         text-decoration: underline;
         text-decoration-color: #338f8f;
-    }
-
-    .bkgFriends {
-        background-image: url("assets/images/friends_bkg.jpg");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        width: 400px;
-        height: 300px
-    }
-
-    .bkgEvents {
-        background-image: url("assets/images/events_bkg.jpg");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        width: 400px;
-        height: 300px;
-    }
-
-
-    .friendsHome {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: rgb(225, 234, 241);
-        background: rgba(76, 83, 117, 0.82);
-        border-radius: 7px;
-        padding: 4px;
-        transition: transform 250ms, opacity 400ms;
-        font-weight: bold;
-    }
-
-    .friendsHome:hover{
-        transform: translate3d(3%, -6%, 10px);
-        background: rgb(77, 76, 117);
-    }
-
-    .flex_home div  {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
-
-    .flex_bkg_home {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        margin: 20px 200px;
     }
 
     .home_title {
