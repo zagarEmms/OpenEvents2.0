@@ -98,51 +98,6 @@ a {
     font-weight: bold;
 }
 
-.create_event_form{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 2.3rem;
-}
-
-.create_event_form form label {
-    font-weight: bold;
-}
-
-.create_event_form form input, form div textarea, form div input {
-    font-size: 2.3rem;
-    margin-bottom: 50px;
-}
-
-.create_event_form form div textarea{
-    display: flex;
-    flex-direction: column;
-    padding: 7px;
-    margin-bottom: 2rem;
-    margin-top: 2rem;
-    border-color: #9ba3da;
-    border-radius: 10px;
-    align-self: center;
-}
-
-.create_event_form input, div input{
-    box-sizing: border-box;
-    outline: none;
-    display: block;
-    width: 100%;
-    padding: 7px;
-    border: none;
-    border-bottom: 1px solid #9ba3da;
-    margin-top: 1rem;
-    margin-bottom: 3rem;
-    height: 45px;
-}
-
-.create_event_textarea{
-    margin-top: 4rem;
-    align-items: flex-start;
-}
-
 .category_music{
     background-color: rgba(140, 64, 143, 0.71);
 }
@@ -517,50 +472,6 @@ a {
         padding-top: 5rem;
     }
 
-    .categories_buttons{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .categories_buttons a{
-        font-size: 2.5rem;
-        color: rgba(3, 50, 107, 0.96);
-        border-radius: 10px;
-        border: 2px solid rgba(3, 50, 107, 0.96);
-        padding: 10px 8px;
-        margin: 0 10px;
-    }
-
-    .categories_buttons a:hover{
-        background: rgb(168, 190, 218);
-        border-color: rgb(168, 190, 218);
-        color: rgba(3, 50, 107, 0.96);
-    }
-
-    .events_general_flex{
-        display: flex;
-        flex-direction: row;
-    }
-
-    .my_events_button {
-        display: flex;
-        flex-direction: column;
-        min-width: 150px;
-        align-items: flex-start;
-        margin-top: 20px;
-    }
-
-    .my_events_button a{
-        font-size: 2.2rem;
-        color: white;
-        border-radius: 10px;
-        background: rgba(3, 50, 107, 0.96);
-        padding: 10px 8px;
-        margin-top: 15px;
-    }
-
     .filters article{
         display: flex;
         flex-direction: row;
@@ -576,42 +487,8 @@ a {
         display: none;
     }
 
-    .filters_desktop{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        font-size: 2.3rem;
-    }
-
-    .filters_desktop a {
-        color: #38487c;
-        font-weight: bold;
-    }
-
     .filter_order {
         align-items: flex-start;
-    }
-
-    .filter_order div{
-        display: flex;
-        flex-direction: row;
-        font-size: 2.3rem;
-    }
-
-    .filter_order div label{
-        margin-bottom: 1.5rem;
-    }
-
-    input[type="radio"]{
-        width: 1.15em;
-        height: 1.15em;
-    }
-
-    .delete_filters{
-        margin-top: 3rem;
-        margin-bottom: 5rem;
-        text-align: right;
-        font-weight: bold;
     }
 
     .order_filter{
@@ -619,149 +496,13 @@ a {
         flex-direction: row;
     }
 
-    .box_eventer{
-        color: #000000;
-        background-color: rgba(197, 209, 224, 0.86);
-        box-shadow: 5px 3px 20px rgba(60, 83, 115, 0.51);
-        border-radius: 8px;
-        padding: 0 15px;
-        margin: 20px 0;
-        align-items: flex-start;
-    }
-
-    .button_create_event{
-        color: white;
-        background: rgba(3, 50, 107, 0.96);
-        border-radius: 8px;
-        padding: 8px 10px;
-        font-size: 2.5rem;
-    }
-
-    .box_eventer h5{
-        font-size: 2.3rem;
-        margin-bottom: 0;
-    }
-
-    .events_list {
-        display: flex;
-        flex-direction: row;
-        padding: 8px;
-        flex-wrap: wrap;
-    }
-
     .img_events{
         border-radius: 8px;
         width: 300px;
     }
 
-    .event_title_box{
-        margin-top: 0;
-        margin-bottom: 10px;
-        border-radius: 8px;
-        width: 300px;
-        padding: 15px 0;
-        text-align: center;
-        font-size: 3rem;
-    }
-
-    .events_details a{
-        margin: 30px 5px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        color: black;
-    }
-
-    .events_details ul, ul li{
-        margin-top: 0;
-        margin-bottom: 0;
-        list-style: none;
-        font-size: 2.5rem;
-        padding-bottom: 20px;
-    }
-
-    .events_details ul li img{
-        width: 20px;
-    }
-
-    .flex_event article {
-        display: flex;
-        flex-direction: column;
-        align-items: start;
-        margin-left: 15rem;
-    }
-
-    .rc_bkg {
-        background-image: url("assets/images/events/roller_coaster_event.jpg");
-        background-size: cover;
-        background-position: center;
-        padding-bottom: 70px;
-        padding-top: 50px;
-        width: 100%;
-        margin-bottom: 2rem;
-    }
-
-    .event_title {
-        font-size: 5rem;
-        color: antiquewhite;
-        background-color: rgba(62, 145, 142, 0.84);
-        border-radius: 2rem;
-        padding: 2rem;
-    }
-
-    .event_subtitle {
-        display: flex;
-        flex-direction: column;
-        align-content: start;
-        font-size: 5rem;
-    }
-
-    .flex_details div{
-        display: flex;
-        flex-direction: row;
-        margin-right: 2rem;
-    }
-
-    .details_icons {
-        width: 5rem;
-    }
-
-    .event_buttons a {
-        font-size: 4rem;
-        padding: 1.5rem;
-        background: white;
-        border: 2px solid #395C8AFF;
-        color: #395C8AFF;
-        border-radius: 2rem;
-    }
-
-    .event_buttons a:hover {
-        background: #395c8a;
-        color: white;
-    }
-
-    .event_buttons_participate a {
-        font-size: 4rem;
-        padding: 1.5rem;
-        background: #395c8a;
-        color: white;
-        border-radius: 2rem;
-    }
-
-    .event_buttons_participate a:hover {
-        background: white;
-        color: #395c8a;
-    }
-
     .bottom_margin {
         margin-bottom: 2rem;
-    }
-
-    .event_buttons_margin div {
-        margin-top: 3rem;
-        margin-bottom: 3rem;
-        margin-right: 20rem;
-        margin-left: 10rem;
     }
 
     .event_score_margin {
@@ -770,20 +511,10 @@ a {
         margin-left: 10rem;
     }
 
-    .event_description_size {
-        font-size: 3rem;
-        line-height: 4rem;
-    }
-
     .flex_event_buttons {
         display: flex;
         flex-direction: column;
         align-items: start;
-    }
-
-    .flex_event_row {
-        display: flex;
-        flex-direction: row;
     }
 
     .flex_event_bkg div h3, div {
@@ -818,41 +549,6 @@ a {
         border-radius: 30px;
         padding: 15px 30px;
         margin-bottom: 3rem;
-    }
-
-    .eventology_list div {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        border: 0.5rem solid #434952;
-        border-radius: 3rem;
-    }
-
-    .flex_eventology {
-        display: flex;
-        flex-direction: row;
-    }
-
-    .eventology_icons img {
-        width: 5rem;
-        padding: 3rem;
-    }
-
-    .flex_eventology_events {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .eventology_desktop_arrow {
-        width: 8rem;
-    }
-
-    .eventology_details a {
-        margin: 0;
-    }
-
-    .eventology_details ul, ul li{
-        margin-right: 3rem;
-        padding-top: 1.5rem;
     }
 
 </style>

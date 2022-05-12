@@ -16,19 +16,7 @@
                 <!--Div that enables the possibility to show only the user's events (created or attended) and their chronology-->
                 <div class="my_events_button">
                     <a href="events.html">List MY EVENTS</a>
-                    <a href="eventology.html">Visit your EVENTOLOGY</a>
-                </div>
-                <!--Div only visible for mobile screen sizes which links to a "filters" screen-->
-                <!--This div is not displayed at desktop screen sizes-->
-                <div class="filters">
-                    <a class="show_categories" href="./events.html">show more categories</a>
-                    <a  class="filters_icon" href="filter_events.html">
-                        <img
-                            src="../media/images/icons/settings_icon.png"
-                            alt="settings icon"
-                            width="50"
-                        />
-                    </a>
+                    <router-link to="/eventology">Visit your EVENTOLOGY</router-link>
                 </div>
                 <!--Div only visible for desktop screen sizes, which shows some filters to apply on the displayed events-->
                 <div class="top_padding">
@@ -62,7 +50,7 @@
                     <h5>Are you an eventer?</h5>
                     <h5>Create your event now!</h5>
                     <!--A button made out of an "a" tag which links to the "create an event" screen-->
-                    <a href="create_event.html"><h4 class="button_create_event">Create an event</h4></a>
+                    <router-link to ="/create"><h4 class="button_create_event">Create an event</h4></router-link>
                 </div>
             </article>
             <!--Article which gathers all the possible events depending on the chosen filters -->
@@ -70,60 +58,60 @@
                 <!--Div which gathers all the information related to one single event: image, location, starting date and maximum participants-->
                 <div class="events_details">
                     <!--Every event is clickable, so it redirects to the specific event page with all its information -->
-                    <a href="event.html">
-                        <div><img class="img_events" src="../media/images/events/roller_coaster_event.jpg" alt="rollercoaster_image" width="450"></div>
+                    <router-link to = "/event">
+                        <div><img class="img_events" src="../assets/images/events/roller_coaster_event.jpg" alt="rollercoaster_image" width="450"></div>
                         <h3 class="event_title_box category_travel">Annual Wonderland</h3>
                         <!--The details are set in a list with three specific points-->
                         <ul>
-                            <li><img src="../media/images/icons/location_icon.png" alt=""> Location: Barcelona</li>
-                            <li><img src="../media/images/icons/calendar_icon.png" alt="">Start date: 10 Mar, 2022</li>
-                            <li><img src="../media/images/icons/group_icon.png" alt="">Max participants: 500</li>
+                            <li><img src="../assets/images/icons/location_icon.png" alt=""> Location: Barcelona</li>
+                            <li><img src="../assets/images/icons/calendar_icon.png" alt="">Start date: 10 Mar, 2022</li>
+                            <li><img src="../assets/images/icons/group_icon.png" alt="">Max participants: 500</li>
                         </ul>
-                    </a>
+                    </router-link>
                 </div>
                 <div class="events_details">
-                    <a href="event.html">
-                        <div><img class="img_events" src="../media/images/events/eating_event.jpg" alt="food_image" width="450"></div>
+                    <router-link to = "/event">
+                        <div><img class="img_events" src="../assets/images/events/eating_event.jpg" alt="food_image" width="450"></div>
                         <h3 class="event_title_box category_food">Eat Fest</h3>
                         <ul class="">
-                            <li><img src="../media/images/icons/location_icon.png" alt=""> Location: Castelldefels</li>
-                            <li><img src="../media/images/icons/calendar_icon.png" alt="">Start date: 24 April, 2022</li>
-                            <li><img src="../media/images/icons/group_icon.png" alt="">Max participants: 1000</li>
+                            <li><img src="../assets/images/icons/location_icon.png" alt=""> Location: Castelldefels</li>
+                            <li><img src="../assets/images/icons/calendar_icon.png" alt="">Start date: 24 April, 2022</li>
+                            <li><img src="../assets/images/icons/group_icon.png" alt="">Max participants: 1000</li>
                         </ul>
-                    </a>
+                    </router-link>
                 </div>
                 <div class="events_details">
-                    <a href="event.html">
-                        <div><img class="img_events" src="../media/images/events/gig_event.jpg" alt="concert_image"></div>
+                    <router-link to = "/event">
+                        <div><img class="img_events" src="../assets/images/events/gig_event.jpg" alt="concert_image"></div>
                         <h3 class="event_title_box category_music">NightMade music festival</h3>
                         <ul class="">
-                            <li><img src="../media/images/icons/location_icon.png" alt=""> Location: Barcelona</li>
-                            <li><img src="../media/images/icons/calendar_icon.png" alt="">Start date: 10 June, 2022</li>
-                            <li><img src="../media/images/icons/group_icon.png" alt="">Max participants: 200</li>
+                            <li><img src="../assets/images/icons/location_icon.png" alt=""> Location: Barcelona</li>
+                            <li><img src="../assets/images/icons/calendar_icon.png" alt="">Start date: 10 June, 2022</li>
+                            <li><img src="../assets/images/icons/group_icon.png" alt="">Max participants: 200</li>
                         </ul>
-                    </a>
+                    </router-link>
                 </div>
                 <div class="events_details">
-                    <a href="event.html">
-                        <div><img class="img_events" src="../media/images/events/sports_event.jpg" alt="basket_image" width="450"></div>
+                    <router-link to = "/event">
+                        <div><img class="img_events" src="../assets/images/events/sports_event.jpg" alt="basket_image" width="450"></div>
                         <h3 class="event_title_box category_sports">FightBall</h3>
                         <ul class="">
-                            <li><img src="../media/images/icons/location_icon.png" alt=""> Location: Esplugues</li>
-                            <li><img src="../media/images/icons/calendar_icon.png" alt="">Start date: 24 May, 2022</li>
-                            <li><img src="../media/images/icons/group_icon.png" alt="">Max participants: 100</li>
+                            <li><img src="../assets/images/icons/location_icon.png" alt=""> Location: Esplugues</li>
+                            <li><img src="../assets/images/icons/calendar_icon.png" alt="">Start date: 24 May, 2022</li>
+                            <li><img src="../assets/images/icons/group_icon.png" alt="">Max participants: 100</li>
                         </ul>
-                    </a>
+                    </router-link>
                 </div>
                 <div class="events_details">
-                    <a href="event.html">
-                        <div><img class="img_events" src="../media/images/events/games_event.jpg" alt="just_dance_image" width="450"></div>
+                    <router-link to = "/event">
+                        <div><img class="img_events" src="../assets/images/events/games_event.jpg" alt="just_dance_image" width="450"></div>
                         <h3 class="event_title_box category_games">Share your move</h3>
                         <ul class="">
-                            <li><img src="../media/images/icons/location_icon.png" alt=""> Location: Lloret de Mar</li>
-                            <li><img src="../media/images/icons/calendar_icon.png" alt="">Start date: 24 June, 2022</li>
-                            <li><img src="../media/images/icons/group_icon.png" alt="">Max participants: 2000</li>
+                            <li><img src="../assets/images/icons/location_icon.png" alt=""> Location: Lloret de Mar</li>
+                            <li><img src="../assets/images/icons/calendar_icon.png" alt="">Start date: 24 June, 2022</li>
+                            <li><img src="../assets/images/icons/group_icon.png" alt="">Max participants: 2000</li>
                         </ul>
-                    </a>
+                    </router-link>
                 </div>
             </article>
         </section>
@@ -140,3 +128,139 @@
             name: 'EventsListView',
     }
 </script>
+
+<style scoped>
+
+    .categories_buttons{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .categories_buttons a{
+        font-size: 2.5rem;
+        color: rgba(3, 50, 107, 0.96);
+        border-radius: 10px;
+        border: 2px solid rgba(3, 50, 107, 0.96);
+        padding: 10px 8px;
+        margin: 0 10px;
+    }
+
+    .categories_buttons a:hover{
+        background: rgb(168, 190, 218);
+        border-color: rgb(168, 190, 218);
+        color: rgba(3, 50, 107, 0.96);
+    }
+
+    .events_general_flex{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .my_events_button {
+        display: flex;
+        flex-direction: column;
+        min-width: 150px;
+        align-items: flex-start;
+        margin-top: 20px;
+    }
+
+    .my_events_button a{
+        font-size: 2.2rem;
+        color: white;
+        border-radius: 10px;
+        background: rgba(3, 50, 107, 0.96);
+        padding: 10px 8px;
+        margin-top: 15px;
+    }
+
+    .top_padding {
+        padding-top: 5rem;
+    }
+
+    .filters_desktop{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: 2.3rem;
+    }
+
+    .filters_desktop a {
+        color: #38487c;
+        font-weight: bold;
+    }
+
+    .filter_order div{
+        display: flex;
+        flex-direction: row;
+        font-size: 2.3rem;
+    }
+
+    .filter_order div label{
+        margin-bottom: 1.5rem;
+    }
+
+    input[type="radio"]{
+        width: 1.15em;
+        height: 1.15em;
+    }
+
+    .delete_filters{
+        margin-top: 3rem;
+        margin-bottom: 5rem;
+        text-align: right;
+        font-weight: bold;
+    }
+
+    .box_eventer{
+        color: #000000;
+        background-color: rgba(197, 209, 224, 0.86);
+        box-shadow: 5px 3px 20px rgba(60, 83, 115, 0.51);
+        border-radius: 8px;
+        padding: 0 15px;
+        margin: 20px 0;
+        align-items: flex-start;
+    }
+
+    .box_eventer h5{
+        font-size: 2.3rem;
+        margin-bottom: 0;
+    }
+
+    .button_create_event{
+        color: white;
+        background: rgba(3, 50, 107, 0.96);
+        border-radius: 8px;
+        padding: 8px 10px;
+        font-size: 2.5rem;
+    }
+
+    .events_list {
+        display: flex;
+        flex-direction: row;
+        padding: 8px;
+        flex-wrap: wrap;
+    }
+
+    .events_details a{
+        margin: 30px 5px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: black;
+    }
+
+    .events_details ul, ul li{
+        margin-top: 0;
+        margin-bottom: 0;
+        list-style: none;
+        font-size: 2.5rem;
+        padding-bottom: 20px;
+    }
+
+    .events_details ul li img{
+        width: 20px;
+    }
+
+</style>

@@ -10,36 +10,36 @@
                 <div>
                     <!--Nav which gathers the links (presented into the shape of images) to the sections of the OpenEvents' website-->
                     <nav>
-                        <a href="search.html">
+                        <router-link to="/search">
                             <img
                                 src="../assets/images/icons/search_icon.png"
                                 alt="search icon"
                             />
-                        </a>
-                        <a href="./events.html">
+                        </router-link>
+                        <router-link to="/events">
                             <img
                                 src="../assets/images/icons/party_icon.png"
                                 alt="events icon"
                             />
-                        </a>
-                        <a href="friends.html">
+                        </router-link>
+                        <router-link to="/friends">
                             <img
                                 src="../assets/images/icons/friends_icon.png"
                                 alt="friends icon"
                             />
-                        </a>
-                        <a href="profile.html">
+                        </router-link>
+                        <router-link to="/profile">
                             <img
                                 src="../assets/images/icons/profile_icon.png"
                                 alt="profile icon"
                             />
-                        </a>
-                        <a href="../index.html">
+                        </router-link>
+                        <router-link to="/index">
                             <img
                                 src="../assets/images/icons/logout_icon.png"
                                 alt="log out icon"
                             />
-                        </a>
+                        </router-link>
                     </nav>
                 </div>
             </article>
