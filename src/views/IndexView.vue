@@ -9,12 +9,12 @@
         <article class="flex_login">
             <!--Form containing user inputs, wrapped together to send the information at the same time-->
             <form class="indexInput, input_box">
-                <input type="email" id="mail" name="mail"
+                <input type="email" id="mail" name="mail" v-model="email"
                        size="10" placeholder="e-mail" pattern="/^[a-zA-Z0-9.!#$%&amp;'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" required />
-                <input type="password" id="password" name="password" required
+                <input type="password" id="password" name="password" v-model="password" required
                        size="10" placeholder="password" />
                 <!--Button that sends the login information-->
-                <router-link to="home"><button class="buttonLogIn" type="button">Log in</button></router-link>
+                <button class="buttonLogIn" type="button" v-on:click="logIn">Log in</button>
             </form>
         </article>
         <!--Section containing 2 articles, one for question and the other for user input-->
@@ -46,9 +46,45 @@
 </template>
 
 <script>
+
     export default {
-            name: 'IndexView',
+        name: "IndexView",
+        data() {
+            return {
+                email: "porcel@gmail.com",
+                password: "porcel123"
+            }
+        },
+        methods: {
+
+            logIn() {
+                fetch("http://puigmal.salle.url.edu/api/v2/users/login", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    email: this.email,
+                    password: this.password,
+                }),
+                })
+                .then((res) => {
+                    alert(res.status);
+                    if (res.status == 200) {
+                        this.$router.push('home')
+                        //window.location.href = "/home";
+                        return res.json();
+                    } else {
+                        alert("Wrong credentials");
+                    }
+                })
+                .then((data) => {
+                    localStorage.setItem("token", data.accessToken);
+                });
+            }
+        }
     }
+
 </script>
 
 <style scoped>
