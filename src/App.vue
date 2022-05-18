@@ -1,12 +1,12 @@
 <template>
-	<HeaderHeader v-show="$route.path != '/index'"/>
+	<HeaderHeader v-show="$route.path != '/'"/>
     <router-view />
-    <FooterFooter v-show="$route.path != '/index'"/>
+    <FooterFooter v-show="$route.path != '/'"/>
 </template>
 <script>
+
     import HeaderHeader from '@/components/Header.vue'
     import FooterFooter from '@/components/Footer.vue'
-
 
 	export default {
 		name: 'HeaderFooter',

@@ -34,7 +34,7 @@
                                 alt="profile icon"
                             />
                         </router-link>
-                        <router-link to="/index">
+                        <router-link to="/">
                             <img
                                 src="../assets/images/icons/logout_icon.png"
                                 alt="log out icon"

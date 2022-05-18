@@ -27,18 +27,18 @@
             <!--Form containing user inputs, wrapped together to send the information at the same time-->
             <form class="input_box">
                 <!--Text type for normal input without hiding or requirements-->
-                <input type="text" id="name" name="name" required
+                <input type="text" id="name" name="name" v-model="nameSignUp" required
                        minlength="1" maxlength="50" size="10" placeholder="name" />
-                <input type="text" id="lastname" name="lastname" required
+                <input type="text" id="lastname" name="lastname" v-model="lastSignUp" required
                        minlength="1" maxlength="50" size="10" placeholder="lastname" />
                 <!--Email type for email input with some email restrictions-->
-                <input type="email" id="newMail" name="newMail"
+                <input type="email" id="newMail" name="newMail" v-model="emailSignUp"
                        minlength="11" maxlength="150" size="10" placeholder="e-mail" pattern="/^[a-zA-Z0-9.!#$%&amp;'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" required />
                 <!--Password type for hided input for passwords-->
-                <input type="password" id="newPassword" name="password" required
+                <input type="password" id="newPassword" name="password" v-model="passwordSignUp" required
                        minlength="1" maxlength="15" size="10" placeholder="password" />
                 <!--Button that sends the signup information-->
-                <button class="buttonSignUp" type="button" onclick="window.location.href='html/home.html'">Sign up</button>
+                <button class="buttonSignUp" type="button" v-on:click="signUp">Sign up</button>
             </form>
         </article>
     </section>
@@ -49,12 +49,7 @@
 
     export default {
         name: "IndexView",
-        data() {
-            return {
-                email: "porcel@gmail.com",
-                password: "porcel123"
-            }
-        },
+       
         methods: {
 
             logIn() {
@@ -69,10 +64,8 @@
                 }),
                 })
                 .then((res) => {
-                    alert(res.status);
                     if (res.status == 200) {
                         this.$router.push('home')
-                        //window.location.href = "/home";
                         return res.json();
                     } else {
                         alert("Wrong credentials");
@@ -80,6 +73,35 @@
                 })
                 .then((data) => {
                     localStorage.setItem("token", data.accessToken);
+                });
+            },
+
+            signUp() {
+                fetch("http://puigmal.salle.url.edu/api/v2/users", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    name: this.nameSignUp,
+                    last_name: this.lastSignUp,
+                    email: this.emailSignUp,
+                    password: this.passwordSignUp,
+                    image: "imageTest",
+                }),
+                })
+                .then((res) => {
+                    console.log(res);
+                    if (res.status == 201) {
+                        alert("User created! Now logIn");
+                        return res.json();
+                    } else {
+                        console.log(res);
+                        alert("Information missing!");
+                    }
+                })
+                .then((data) => {
+                    console.log(data);
                 });
             }
         }
