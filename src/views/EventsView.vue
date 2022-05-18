@@ -10,7 +10,7 @@
             <a href="./events.html">SPORTS</a>
         </section>
         <!--Section which gathers the filters for the displayed events and all the matching events -->
-        <section class="events_general_flex" v-if="veure">
+        <section class="events_general_flex">
             <!--Article that gathers interactions related to the events -->
             <article class="margins">
                 <!--Div that enables the possibility to show only the user's events (created or attended) and their chronology-->
@@ -31,14 +31,7 @@
                     </div>
                     <!--Div that shows filters to sort the order on which the events are shown -->
                     <div class="filter_order filters_desktop">
-                        <div>
-                            <input type="radio" id="ascending" name="order" value="order">
-                            <label for="ascending">Ascending</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="descending" name="order" value="order">
-                            <label for="descending">Descending</label>
-                        </div>
+                           <label><input type="checkbox" id="score_filter" value="score_filter" v-model="checked">Order by score</label>
                     </div>
                     <!--Div that allows deleting the filters on desktop events' web page -->
                     <div class="filters_desktop delete_filters">
@@ -56,60 +49,16 @@
             <!--Article which gathers all the possible events depending on the chosen filters -->
             <article class="events_list">
                 <!--Div which gathers all the information related to one single event: image, location, starting date and maximum participants-->
-                <div class="events_details">
+                <div class="events_details" v-for="event in event" :key="event.id" >
                     <!--Every event is clickable, so it redirects to the specific event page with all its information -->
                     <router-link to = "/event">
                         <div><img class="img_events" src="../assets/images/events/roller_coaster_event.jpg" alt="rollercoaster_image" width="450"></div>
-                        <h3 class="event_title_box category_travel">Annual Wonderland</h3>
+                        <h3 class="event_title_box category_travel">{{event.name}}</h3>
                         <!--The details are set in a list with three specific points-->
                         <ul>
-                            <li><img src="../assets/images/icons/location_icon.png" alt=""> Location: Barcelona</li>
-                            <li><img src="../assets/images/icons/calendar_icon.png" alt="">Start date: 10 Mar, 2022</li>
-                            <li><img src="../assets/images/icons/group_icon.png" alt="">Max participants: 500</li>
-                        </ul>
-                    </router-link>
-                </div>
-                <div class="events_details">
-                    <router-link to = "/event">
-                        <div><img class="img_events" src="../assets/images/events/eating_event.jpg" alt="food_image" width="450"></div>
-                        <h3 class="event_title_box category_food">Eat Fest</h3>
-                        <ul class="">
-                            <li><img src="../assets/images/icons/location_icon.png" alt=""> Location: Castelldefels</li>
-                            <li><img src="../assets/images/icons/calendar_icon.png" alt="">Start date: 24 April, 2022</li>
-                            <li><img src="../assets/images/icons/group_icon.png" alt="">Max participants: 1000</li>
-                        </ul>
-                    </router-link>
-                </div>
-                <div class="events_details">
-                    <router-link to = "/event">
-                        <div><img class="img_events" src="../assets/images/events/gig_event.jpg" alt="concert_image"></div>
-                        <h3 class="event_title_box category_music">NightMade music festival</h3>
-                        <ul class="">
-                            <li><img src="../assets/images/icons/location_icon.png" alt=""> Location: Barcelona</li>
-                            <li><img src="../assets/images/icons/calendar_icon.png" alt="">Start date: 10 June, 2022</li>
-                            <li><img src="../assets/images/icons/group_icon.png" alt="">Max participants: 200</li>
-                        </ul>
-                    </router-link>
-                </div>
-                <div class="events_details">
-                    <router-link to = "/event">
-                        <div><img class="img_events" src="../assets/images/events/sports_event.jpg" alt="basket_image" width="450"></div>
-                        <h3 class="event_title_box category_sports">FightBall</h3>
-                        <ul class="">
-                            <li><img src="../assets/images/icons/location_icon.png" alt=""> Location: Esplugues</li>
-                            <li><img src="../assets/images/icons/calendar_icon.png" alt="">Start date: 24 May, 2022</li>
-                            <li><img src="../assets/images/icons/group_icon.png" alt="">Max participants: 100</li>
-                        </ul>
-                    </router-link>
-                </div>
-                <div class="events_details">
-                    <router-link to = "/event">
-                        <div><img class="img_events" src="../assets/images/events/games_event.jpg" alt="just_dance_image" width="450"></div>
-                        <h3 class="event_title_box category_games">Share your move</h3>
-                        <ul class="">
-                            <li><img src="../assets/images/icons/location_icon.png" alt=""> Location: Lloret de Mar</li>
-                            <li><img src="../assets/images/icons/calendar_icon.png" alt="">Start date: 24 June, 2022</li>
-                            <li><img src="../assets/images/icons/group_icon.png" alt="">Max participants: 2000</li>
+                            <li><img src="../assets/images/icons/location_icon.png" alt="">Location: {{event.location}}</li>
+                            <li><img src="../assets/images/icons/calendar_icon.png" alt="">Start date: {{event.eventStart_date}}</li>
+                            <li><img src="../assets/images/icons/group_icon.png" alt="">Max participants: {{event.n_participators}}</li>
                         </ul>
                     </router-link>
                 </div>
@@ -119,13 +68,64 @@
 </template>
 
 <script>
+    
+
     export default {
-        data() {
-            return {
-                veure:1
+
+        beforeMount() {
+            fetch("http://puigmal.salle.url.edu/api/v2/events", {
+                method: "GET",
+                headers: {
+                    Authoritation: "Bearer " + this.$root.$data.token,
+                },
+                })
+                .then((res) => {
+                    if (res.status != 200) {
+                        alert("No events were found");
+                        
+                    } else {
+                        return res.json();
+                    }
+                })
+                .then((data) => {
+                    this.event = data;
+                    console.log(this.event);
+                }
+            );
+        },
+
+        methods: {
+            checked() {
+                fetch("http://puigmal.salle.url.edu/api/v2/events/best", {
+                    method: "GET",
+                    headers: {
+                        Authoritation: "Bearer " + this.$root.$data.token,
+                    },
+                    })
+                    .then((res) => {
+                        if (res.status != 200) {
+                            alert("No events were found");
+                            
+                        } else {
+                            return res.json();
+                        }
+                    })
+                    .then((data) => {
+                        this.event = data;
+                        console.log(this.event);
+                    }
+                );
             }
         },
-            name: 'EventsListView',
+
+        data() {
+            return {
+                event: [],
+            }
+        },
+
+        name: 'EventsListView',
+        
     }
 </script>
 

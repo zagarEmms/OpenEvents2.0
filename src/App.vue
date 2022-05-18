@@ -13,7 +13,13 @@
 		components: {
 			HeaderHeader,
 			FooterFooter
-		}
+		},
+        
+        data() {
+            return {
+                token: localStorage.getItem("token"),
+            }
+        },
 	}
 
 </script>
