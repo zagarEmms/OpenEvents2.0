@@ -61,12 +61,6 @@ a {
     margin-top: 20px;
 }
 
-.friends_flex {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .friend_info{
     align-items: flex-start;
 }
