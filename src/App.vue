@@ -18,6 +18,7 @@
         data() {
             return {
                 token: localStorage.getItem("token"),
+                eventId: localStorage.getItem("eventId"),
             }
         },
 	}

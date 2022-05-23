@@ -1,7 +1,7 @@
 <template>
     <main class="container">
         <div class="rc_bkg flex_event">
-            <h3 class="event_title">Annual Wonderland</h3>
+            <h3 class="event_title">{{event[0].name}}</h3>
         </div>
         <div class="flex_event_row">
             <section class="flex_event margins">
@@ -11,7 +11,7 @@
                     </div>
                     <div>
                         <p class="event_description_size">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed tristique tortor eu quam dignissim, et fringilla ante egestas. Aenean elementum elementum metus, eget condimentum eros finibus non. Proin finibus, ex eget ultrices egestas, augue neque egestas turpis, non imperdiet eros orci quis mauris. Donec eget vulputate mauris. Nullam faucibus consequat mattis. Duis vitae turpis a sem lobortis vestibulum at ac libero.
+                            {{event[0].description}}
                         </p>
                     </div>
                 </article>
@@ -21,23 +21,19 @@
                 <article class="flex_details">
                     <div>
                         <div class="div_inline"><img class="details_icons" src="../assets/images/icons/location_icon.png" alt="Location Icon"></div>
-                        <div class="div_inline"><h3>Location: Barcelona</h3></div>
+                        <div class="div_inline"><h3>{{event[0].location}}</h3></div>
                     </div>
                     <div>
                         <div class="div_inline"><img class="details_icons" src="../assets/images/icons/calendar_icon.png" alt="Location Icon"></div>
-                        <div class="div_inline"><h3>Dates: 10 Mar, 2022 - 12 Mar, 2022</h3></div>
+                        <div class="div_inline"><h3>Dates: {{event[0].eventStart_date}}, {{event[0].eventEnd_date}}</h3></div>
                     </div>
                     <div>
                         <div class="div_inline"><img class="details_icons" src="../assets/images/icons/group_icon.png" alt="Location Icon"></div>
-                        <div class="div_inline"><h3>Max. participants: 500</h3></div>
+                        <div class="div_inline"><h3>Max. participants: {{event[0].n_participators}}</h3></div>
                     </div>
                     <div>
                         <div class="div_inline"><img class="details_icons" src="../assets/images/icons/category_icon.png" alt="Location Icon"></div>
-                        <div class="div_inline"><h3>Category: music</h3></div>
-                    </div>
-                    <div>
-                        <div class="div_inline"><img class="details_icons" src="../assets/images/icons/person_icon.png" alt="Location Icon"></div>
-                        <div class="div_inline"><h3>Creator: Luca</h3></div>
+                        <div class="div_inline"><h3>Category: {{event[0].type}}</h3></div>
                     </div>
                 </article>
             </section>
@@ -52,7 +48,7 @@
                 </div>
             </section>
             <section class="event_buttons_margin">
-                <div class="event_buttons_participate"><a  href="./event.html">Participate!</a></div>
+                <div class="event_buttons_participate"><a v-on:click="participate()">Participate!</a></div>
                 <div class="event_buttons"><a href="./event.html">Share!</a></div>
             </section>
         </div>
@@ -61,7 +57,66 @@
 
 <script>
     export default {
-            name: 'EventView',
+
+        name: 'EventView',
+
+        beforeMount() {
+
+            let id = this.$root.$data.eventId;
+            fetch("http://puigmal.salle.url.edu/api/v2/events/" + id, {
+                method: "GET",
+                headers: {
+                    Authoritation: "Bearer " + this.$root.$data.token,
+                },
+                })
+                .then((res) => {
+                    if (res.status != 200) {
+                        alert("No events were found");
+                        
+                    } else {
+                        return res.json();
+                    }
+                })
+                .then((data) => {
+                    this.event = data;
+                    console.log(this.event);
+                }
+            );
+        },
+
+        methods: {
+
+            participate() {
+
+                let id = this.$root.$data.eventId;
+            
+                fetch("http://puigmal.salle.url.edu/api/v2/events/" + id + "/assistances", {
+                    method: "POST",
+                    headers: {
+                        Authoritation: "Bearer " + this.$root.$data.token,
+                    },
+                    })
+                    .then((res) => {
+                        if (res.status != 200) {
+                            alert("No events were found");
+                            
+                        } else {
+                            return res.json();
+                        }
+                    })
+                    .then((data) => {
+                        alert("You have successfully participated in the event!");
+                        this.event = data;
+                        console.log(this.event);
+                    }
+                );
+            },
+            },
+             data() {
+            return {
+                event: [],
+            }
+        },
     }
 </script>
 
