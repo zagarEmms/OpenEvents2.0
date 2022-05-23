@@ -51,7 +51,7 @@
                 <!--Div which gathers all the information related to one single event: image, location, starting date and maximum participants-->
                 <div class="events_details" v-for="event in event" :key="event.id" >
                     <!--Every event is clickable, so it redirects to the specific event page with all its information -->
-                    <router-link to = "/event">
+                    <router-link to = "/event" v-on:click="saveEventId(event.id)">
                         <div><img class="img_events" src="../assets/images/events/roller_coaster_event.jpg" alt="rollercoaster_image" width="450"></div>
                         <h3 class="event_title_box category_travel">{{event.name}}</h3>
                         <!--The details are set in a list with three specific points-->
@@ -115,6 +115,9 @@
                         console.log(this.event);
                     }
                 );
+            },
+            saveEventId(id) {
+                this.$root.$data.eventId = id;
             }
         },
 
