@@ -18,7 +18,9 @@
         data() {
             return {
                 token: localStorage.getItem("token"),
+                myId: localStorage.getItem("myId"),
                 eventId: localStorage.getItem("eventId"),
+                userId: localStorage.getItem("friendId"),
             }
         },
 	}
