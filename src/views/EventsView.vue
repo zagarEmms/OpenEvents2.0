@@ -76,7 +76,7 @@
             fetch("http://puigmal.salle.url.edu/api/v2/events", {
                 method: "GET",
                 headers: {
-                    Authoritation: "Bearer " + this.$root.$data.token,
+                    Authorization: "Bearer " + this.$root.$data.token,
                 },
                 })
                 .then((res) => {
@@ -99,7 +99,7 @@
                 fetch("http://puigmal.salle.url.edu/api/v2/events/best", {
                     method: "GET",
                     headers: {
-                        Authoritation: "Bearer " + this.$root.$data.token,
+                        Authorization: "Bearer " + this.$root.$data.token,
                     },
                     })
                     .then((res) => {

@@ -45,10 +45,15 @@
                     <div class="star"></div>
                     <div class="star"></div>
                     <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
                 </div>
             </section>
             <section class="event_buttons_margin">
-                <div class="event_buttons_participate"><a v-on:click="participate()">Participate!</a></div>
+                <div class="event_buttons_participate"><a v-on:click="participate()">{{button}}</a></div>
                 <div class="event_buttons"><a href="./event.html">Share!</a></div>
             </section>
         </div>
@@ -63,10 +68,11 @@
         beforeMount() {
 
             let id = this.$root.$data.eventId;
+
             fetch("http://puigmal.salle.url.edu/api/v2/events/" + id, {
                 method: "GET",
                 headers: {
-                    Authoritation: "Bearer " + this.$root.$data.token,
+                    Authorization: "Bearer " + this.$root.$data.token,
                 },
                 })
                 .then((res) => {
@@ -82,6 +88,30 @@
                     console.log(this.event);
                 }
             );
+
+            let user_id = this.$root.$data.myId;
+            let event_id = this.$root.$data.eventId;
+
+            fetch("http://puigmal.salle.url.edu/api/v2/assistances/" + user_id + "/" + event_id, {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + this.$root.$data.token,
+                },
+                })
+                .then((res) => {
+                    if (res.status != 200) {
+                        alert("No events were found");
+                        
+                    } else {
+                        this.button = "Participating!";
+                        return res.json();
+                    }
+                })
+                .then((data) => {
+                    this.event = data;
+                    console.log(this.event);
+                }
+            );
         },
 
         methods: {
@@ -89,23 +119,22 @@
             participate() {
 
                 let id = this.$root.$data.eventId;
+                this.button = "Participating!";
             
                 fetch("http://puigmal.salle.url.edu/api/v2/events/" + id + "/assistances", {
                     method: "POST",
                     headers: {
-                        Authoritation: "Bearer " + this.$root.$data.token,
+                        Authorization: "Bearer " + this.$root.$data.token,
                     },
                     })
                     .then((res) => {
                         if (res.status != 200) {
-                            alert("No events were found");
-                            
+                            alert("Error in connection");
                         } else {
                             return res.json();
                         }
                     })
                     .then((data) => {
-                        alert("You have successfully participated in the event!");
                         this.event = data;
                         console.log(this.event);
                     }
@@ -115,6 +144,7 @@
              data() {
             return {
                 event: [],
+                button: "Participate",
             }
         },
     }

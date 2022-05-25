@@ -72,7 +72,7 @@
                     }
                 })
                 .then((data) => {
-                    localStorage.setItem("token", data.accessToken);
+                    this.$root.$data.token = data.token;
                 });
             },
 
