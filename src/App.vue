@@ -18,7 +18,9 @@
         data() {
             return {
                 token: localStorage.getItem("token"),
+                myId: localStorage.getItem("myId"),
                 eventId: localStorage.getItem("eventId"),
+                userId: localStorage.getItem("friendId"),
             }
         },
 	}
@@ -60,12 +62,6 @@ a {
 
 .searchText {
     margin-top: 20px;
-}
-
-.friends_flex {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .friend_info{

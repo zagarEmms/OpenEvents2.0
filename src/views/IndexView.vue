@@ -65,7 +65,6 @@
                 })
                 .then((res) => {
                     if (res.status == 200) {
-                        this.$router.push('home')
                         return res.json();
                     } else {
                         alert("Wrong credentials");
@@ -74,6 +73,32 @@
                 .then((data) => {
                     this.$root.$data.token = data.token;
                 });
+
+                fetch("http://puigmal.salle.url.edu/api/v2/users", {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + this.$root.$data.token,
+                },
+                })
+                .then((res) => {
+                    if (res.status == 200) {
+                        return res.json();
+                    } else {
+                        alert("Wrong credentials");
+                    }
+                })
+                .then(data => {
+                    console.log(data);
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].email == this.email) {
+                            localStorage.setItem("myId", data[i].id);
+                            console.log(data[i].id);
+                            break;
+                        }
+                    }
+                    this.$router.push('home');
+                });
+
             },
 
             signUp() {
