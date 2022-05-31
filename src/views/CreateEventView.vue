@@ -4,46 +4,46 @@
             <article class="create_event_form">
                 <h2 class="home_title">Create an event</h2>
                 <form>
-                    <label for="image">Select a picture for the event:</label>
-                    <input type="file" id="image" name="event_image" accept="image/png, image/jpeg">
+                    <label for="eventName">Select a name for the event:</label>
+                    <input type="text" id="eventName" name="eventName" required minlength="1" maxlength="30" placeholder="name" v-model="eventName" />
 
-                    <label for="name">Select a name for the event:</label>
-                    <input type="text" id="name" name="name" required minlength="1" maxlength="20" placeholder="name" />
+                    <label for="image">Select a picture for the event:</label>
+                    <input type="text" id="image" name="event_image" placeholder="image" v-model="image" >
 
                     <label for="location">Locate your event:</label>
-                    <input type="text" id="location" name="location" required minlength="1" maxlength="30" placeholder="location" />
+                    <input type="text" id="location" name="location" required minlength="1" maxlength="30" placeholder="location" v-model="location" />
 
                     <label for="participants">Max. participants:</label>
-                    <input type="number" id="participants" name="participants" min="1" placeholder="participants">
+                    <input type="number" id="participants" name="participants" min="1" placeholder="participants" v-model="n_participators">
 
                     <label for="category">Choose a category:</label>
-                    <select class="create_event_select" id="category" name="category">
-                        <option value="0">Category</option>
-                        <option value="1">Music</option>
-                        <option value="2">Education</option>
-                        <option value="3">Sports</option>
-                        <option value="4">Games</option>
-                        <option value="5">Travel</option>
-                        <option value="6">Food</option>
-                        <option value="6">Other</option>
+                    <select class="create_event_select" id="category" name="category" v-model="type">
+                        <option value="Category">Category</option>
+                        <option value="Music">Music</option>
+                        <option value="Education">Education</option>
+                        <option value="Sports">Sports</option>
+                        <option value="Games">Games</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Food">Food</option>
+                        <option value="Other">Other</option>
                     </select>
 
                     <div class="create_event_textarea">
                         <label for="description">Give your event a description:</label>
-                        <textarea rows="6" cols="40" id="description" name="description" placeholder="Describe your event..."></textarea>
+                        <textarea rows="6" cols="40" id="description" name="description" placeholder="Describe your event..." v-model="description"></textarea>
                     </div>
 
                     <label for="start_date">Starting date:</label>
-                    <input type="date" id="start_date" name="event_start" value="Today" min="2022-04-01">
+                    <input type="date" id="start_date" name="event_start" min="2022-04-01" v-model="sDate">
 
                     <label for="end_date">Ending date:</label>
-                    <input type="date" id="end_date" name="event_end" min="2022-04-01">
+                    <input type="date" id="end_date" name="event_end" min="2022-04-01" v-model="eDate">
 
-                    <label for="start_time">Starting hour:</label> <input type="time" id="start_time" name="start_time">
-                    <label for="end_time">Ending hour:</label> <input type="time" id="end_time" name="end_time">
+                    <label for="start_time">Starting hour:</label> <input type="time" id="start_time" name="start_time" v-model="sTime">
+                    <label for="end_time">Ending hour:</label> <input type="time" id="end_time" name="end_time" v-model="eTime">
 
                 </form>
-                <button class="button_event_creation" type="button" onclick="window.location.href='home.html'">CREATE IT!</button>
+                <button class="button_event_creation" type="button" v-on:click="create">CREATE IT!</button>
             </article>
         </section>
     </main>  
@@ -51,7 +51,38 @@
 
 <script>
     export default {
-            name: 'CreateEventView',
+        name: 'CreateEventView',
+        methods: {
+            create() {
+                fetch("http://puigmal.salle.url.edu/api/v2/events", {
+                method: "POST",
+                headers: {
+                    Authorization: "Bearer " + this.$root.$data.token,
+                },
+                body: JSON.stringify({
+                    name: this.eventName,	
+                    image: this.image,
+                    location: this.location,
+                    description: this.description,
+                    eventStart_date: this.sDate + ", " + this.sTime,
+                    eventEnd_date: this.eDate+ ", " + this.eTime,
+                    n_participators: this.n_participators,
+                    type: this.type,
+                }),
+                })
+                .then((res) => {
+                    if (res.status != 200) {
+                        console.log(res)
+                        alert("Missing parameters");
+                    } else {
+                        return res.json();
+                    }
+                })
+                .then(() => {
+                    this.$router.push('events');
+                });
+            },
+        }
     }
 </script>
 
