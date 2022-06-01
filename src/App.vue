@@ -446,8 +446,8 @@ a {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 6rem;
-        padding-bottom: 3rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
     }
 
     .divisor_color {

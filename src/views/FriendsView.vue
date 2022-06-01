@@ -16,7 +16,7 @@
         <section class="friends_flex">
             <h2>Meet new people</h2>
             <div v-for="user in user" :key="user.id">
-                <router-link to="/user" v-on:click="saveFriendId(user.id)">
+                <router-link to="/friendProfile" v-on:click="saveFriendId(user.id)">
                     <article class="friends_flex_info">
                         <div><img class="friends_profile_img" :src="user.image" alt="Profile Icon"></div>
                         <div class="friend_info">
@@ -33,6 +33,7 @@
 
 <script>
     export default {
+
         beforeMount() {
             fetch("http://puigmal.salle.url.edu/api/v2/users", {
                 method: "GET",
