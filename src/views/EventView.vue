@@ -103,13 +103,16 @@
                         alert("No events were found");
                         
                     } else {
-                        this.button = "Participating!";
                         return res.json();
                     }
                 })
                 .then((data) => {
-                    this.event = data;
-                    console.log(this.event);
+                    alert(data[0].user_id);
+                    if (data[0].user_id == user_id) { 
+                        this.button = "Participating!";
+                    } else {
+                        this.button = "Participate";
+                    }
                 }
             );
         },
