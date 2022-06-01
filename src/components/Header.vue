@@ -34,7 +34,7 @@
                                 alt="profile icon"
                             />
                         </router-link>
-                        <router-link to="/">
+                        <router-link to="/" v-on:click="signout()">
                             <img
                                 src="../assets/images/icons/logout_icon.png"
                                 alt="log out icon"
@@ -49,6 +49,14 @@
 <script>
 	export default {
 		name: 'HeaderHeader',
+        methods: {
+            signout() {
+                localStorage.removeItem('token');
+                localStorage.removeItem('myId');
+                localStorage.removeItem("eventId");
+                localStorage.removeItem("friendId");
+            }
+        }
 	}
 </script>
 
