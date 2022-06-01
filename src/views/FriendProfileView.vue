@@ -196,11 +196,14 @@ export default {
                     }
             })
             .then((data) => {
-                for (let i = 0; i < data[i].length; i++) {
+                for (var i = 0; i < data.length; i++) {
                     if (data[i].id == id) {
+                        console.log("You are already friends");
                         this.friendStatus = "friending";
+                        break;
                         
                     } else {
+                        console.log("You are not friends");
                         this.friendStatus = "add friend";
                     }
 
@@ -210,7 +213,6 @@ export default {
         },
 
         addFriend(id) {
-            alert(id);
 
             fetch("http://puigmal.salle.url.edu/api/v2/friends/" + id, {
                 method: "POST",
@@ -219,14 +221,14 @@ export default {
             },
             })
             .then((res) => {
-                if (res.status != 200) {
-                    alert("Error in connection");
+                if (res.status != 201) {
+                    alert("Already requested");
                 } else {
                     return res.json();
                 }
             })
             .then(() => {
-                    this.friendStatus = "friending";
+                    this.friendStatus = "requested";
                     console.log(this.friend);
                 }
             );
@@ -242,5 +244,11 @@ export default {
 </script>
 
 <style scoped>
+
+.flex_profile {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
 </style>
