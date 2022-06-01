@@ -9,10 +9,10 @@
             </article>
             <article class="margins flex_bkg_home">
                 <div class="bkgFriends">
-                    <a href="friends.html"><h1 class="friendsHome">MEET FRIENDS</h1></a>
+                    <router-link to = "/friends"><h1 class="friendsHome">MEET FRIENDS</h1></router-link>
                 </div>
                 <div class="bkgEvents">
-                    <a href="events.html"><h1 class="friendsHome">ENJOY EVENTS</h1></a>
+                    <router-link to = "/events"><h1 class="friendsHome">ENJOY EVENTS</h1></router-link>
                 </div>
             </article>
         </section>
