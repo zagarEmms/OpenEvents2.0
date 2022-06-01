@@ -71,7 +71,7 @@
                     }
                 })
                 .then((data) => {
-                    this.$root.$data.token = data.token;
+                    localStorage.setItem("token", data.accessToken);
                 });
 
                 fetch("http://puigmal.salle.url.edu/api/v2/users", {
