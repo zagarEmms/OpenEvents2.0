@@ -333,65 +333,7 @@ a {
         display: inline-block;
     }
 
-    .flex_profile {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .flex_profile_info {
-        width: 70rem;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
-    .flex_profile_info div {
-        align-items: flex-start;
-    }
-
-    .profile_info_theme h3 {
-        justify-items: center;
-        padding-bottom: 1.5rem;
-        padding-top: 1.5rem;
-    }
-
-    .profile_info_theme_input h3 {
-        color: #0c2341;
-        border: solid 0.2rem #5b5a5a;
-        padding: 1.5rem;
-        border-radius: 1rem;
-        font-weight: lighter;
-        width: 200px;
-    }
-
-    .edit_profile_link {
-        color: black;
-        margin-bottom: 10px;
-    }
-
-    .edit_profile_img {
-        width: 3rem;
-    }
-
-    .done_profile {
-        padding: 1.5rem;
-        color: whitesmoke;
-        background-color: darkgreen;
-        border-radius: 5rem;
-    }
-
-    .done_profile:hover {
-        color: darkgreen;
-        background-color: whitesmoke;
-    }
-
-    .flex_edit_buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: end;
-        margin-left: 35rem;
-    }
+    
 
     .star-container {
         display: flex;
