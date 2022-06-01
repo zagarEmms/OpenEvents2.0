@@ -20,7 +20,7 @@
                 <!--Div that enables the possibility to show only the user's events (created or attended) and their chronology-->
                 <div class="my_events_button">
                     <button type="button" v-on:click="myEvents">List MY EVENTS</button>
-                    <button>Visit your EVENTOLOGY</button>
+                    <router-link to ="/eventology"><button>Visit your EVENTOLOGY</button></router-link>
                 </div>
                 <!--Div only visible for desktop screen sizes, which shows some filters to apply on the displayed events-->
                 <div class="top_padding">
