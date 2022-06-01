@@ -10,7 +10,8 @@
                     <h3>{{user[0].email}}</h3>
                 </div>
                 <div>
-                    <a href="./friend.html"><h3 class="friend_add">be friend</h3></a>
+                    <a v-on:click="addFriend(user[0].id)"><h3 class="friend_add">{{friendStatus}}</h3></a>
+
                 </div>
             </article>
 
@@ -22,11 +23,13 @@
                     <h3 class="home_title bold">THEIR EVENTS</h3>
                 </div>
                 <div class="friends_flex_info" v-for="event in event" :key="event.id">
-                    <div><img class="friends_profile_img" :src="event.image" alt="Profile Icon"></div>
-                    <div class="friend_info">
-                        <div><h3 class="black">{{event.name}}</h3></div>
-                        <div><h3 class="black">{{event.type}}</h3></div>
-                    </div>
+                    <router-link to = "/event" v-on:click="saveEventId(event.id)">
+                        <div><img class="friends_profile_img" :src="event.image" alt="Profile Icon"></div>
+                        <div class="friend_info">
+                            <div><h3 class="black">{{event.name}}</h3></div>
+                            <div><h3 class="black">{{event.type}}</h3></div>
+                        </div>
+                    </router-link>
                 </div>
             </article>
 
@@ -78,6 +81,7 @@ export default {
             event: [],
             statistics: {},
             friend: [],
+            friendStatus: "add friend",
         }
     },
 
@@ -85,6 +89,7 @@ export default {
 
         let id = this.$root.$data.userId;
         this.getInfo(id);
+        this.checkFriend(id);
 
     },
 
@@ -170,6 +175,66 @@ export default {
                     console.log(this.friend);
                 }
             );
+
+           
+        },
+
+        checkFriend(id) {
+
+            fetch("http://puigmal.salle.url.edu/api/v2/friends", {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + this.$root.$data.token,
+                }
+            })
+            .then((res) => {
+                    if (res.status != 200) {
+                        alert("No friends were found");
+                        
+                    } else {
+                        return res.json();
+                    }
+            })
+            .then((data) => {
+                for (let i = 0; i < data[i].length; i++) {
+                    if (data[i].id == id) {
+                        this.friendStatus = "friending";
+                        
+                    } else {
+                        this.friendStatus = "add friend";
+                    }
+
+                }
+                
+            });
+        },
+
+        addFriend(id) {
+            alert(id);
+
+            fetch("http://puigmal.salle.url.edu/api/v2/friends/" + id, {
+                method: "POST",
+                headers: {
+                    Authorization: "Bearer " + this.$root.$data.token,
+            },
+            })
+            .then((res) => {
+                if (res.status != 200) {
+                    alert("Error in connection");
+                } else {
+                    return res.json();
+                }
+            })
+            .then(() => {
+                    this.friendStatus = "friending";
+                    console.log(this.friend);
+                }
+            );
+
+        },
+
+        saveEventId(id) {
+            this.$root.$data.eventId = id;
         },
     },
 

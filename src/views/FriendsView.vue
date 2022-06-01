@@ -2,16 +2,21 @@
     <main>
         <section class="friends_flex">
             <h2>Your Friends</h2>
-            <!-- <a href="friend.html">
-                <article class="friends_flex_info">
-                    <div><img class="friends_profile_img" src="../media/images/profileImg.jpg" alt="Profile Icon"></div>
-                    <div class="friend_info">
-                        <h3 class="black">Luca</h3>
-                        <h3 class="black">luca@openevents.com</h3>
-                    </div>
-                </article>
-            </a> -->
-            
+            <div v-if="friend.length == 0">
+                <h3 class="home_title bold">Any friend to show yet</h3>
+            </div>
+            <div v-else, v-for="friend in friend" :key="friend.id">
+                <router-link to="/friendProfile" v-on:click="saveFriendId(friend.id)">
+                    <article class="friends_flex_info">
+                        <div><img class="friends_profile_img" :src="friend.image" alt="Profile Icon"></div>
+                        <div class="friend_info">
+                            <div><h3 class="black">{{friend.name}} {{friend.lastname}}</h3></div>
+                            <div><h3 class="black">{{friend.lastname}}</h3></div>
+                        </div>
+                    </article>
+                </router-link>
+            </div>
+
         </section>
         <section class="friends_flex">
             <h2>Meet new people</h2>
@@ -33,8 +38,35 @@
 
 <script>
     export default {
+        name: 'FriendsView',
+        data() {
+            return {
+                user: [],
+                friend: [],
+            }
+        },
 
         beforeMount() {
+            fetch("http://puigmal.salle.url.edu/api/v2/friends", {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + this.$root.$data.token,
+                }
+            })
+            .then((res) => {
+                    if (res.status != 200) {
+                        alert("No friends were found");
+                        
+                    } else {
+                        return res.json();
+                    }
+                })
+                .then((data) => {
+                    this.friend = data;
+                    console.log(this.friend);
+                }
+            );
+
             fetch("http://puigmal.salle.url.edu/api/v2/users", {
                 method: "GET",
                 headers: {
@@ -61,16 +93,8 @@
                 this.$root.$data.userId = id;
             }
         },
-
-        data() {
-            return {
-                user: [],
-            }
-        },
-
-        name: 'FriendsView',
             
-        }
+    }
 </script>
 
 <style scoped>
