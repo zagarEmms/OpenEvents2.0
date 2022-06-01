@@ -456,21 +456,6 @@ a {
         width: 50rem;
     }
 
-    .terms_flex {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .terms_title {
-        width: 25rem;
-        font-weight: bold;
-    }
-
-    .terms_description {
-        font-size: 3rem;
-    }
-
     .top_padding {
         padding-top: 5rem;
     }

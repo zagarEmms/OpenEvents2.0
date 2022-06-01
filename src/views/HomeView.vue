@@ -9,10 +9,17 @@
             </article>
             <article class="margins flex_bkg_home">
                 <div class="bkgFriends">
+<<<<<<< HEAD
                     <router-link to="/friends"><h1 class="friendsHome">MEET FRIENDS</h1></router-link>
                 </div>
                 <div class="bkgEvents">
                     <router-link to="/events"><h1 class="friendsHome">ENJOY EVENTS</h1></router-link>
+=======
+                    <router-link to = "/friends"><h1 class="friendsHome">MEET FRIENDS</h1></router-link>
+                </div>
+                <div class="bkgEvents">
+                    <router-link to = "/events"><h1 class="friendsHome">ENJOY EVENTS</h1></router-link>
+>>>>>>> 08b72c8dcce8264324bf4688ef717f93f433d252
                 </div>
             </article>
         </section>

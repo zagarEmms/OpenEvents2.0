@@ -4,10 +4,14 @@
         <h2 class="home_title">Discover Events</h2>
         <!--section that gathers the events' categories and filters the displayed events depending on the selected category -->
         <section class="categories_buttons">
-            <a href="./events.html">TRENDING</a>
-            <a href="./events.html">MUSIC</a>
-            <a href="./events.html">EDUCATION</a>
-            <a href="./events.html">SPORTS</a>
+            <button type="button" v-on:click="filtersEvents(`Trending`)">TRENDING</button>
+            <button type="button" v-on:click="filtersEvents(`Music`)">MUSIC</button>
+            <button type="button" v-on:click="filtersEvents(`Education`)">EDUCATION</button>
+            <button type="button" v-on:click="filtersEvents(`Sports`)">SPORTS</button>
+            <button type="button" v-on:click="filtersEvents(`Games`)">GAMES</button>
+            <button type="button" v-on:click="filtersEvents(`Travel`)">TRAVEL</button>
+            <button type="button" v-on:click="filtersEvents(`Food`)">FOOD</button>
+            <button type="button" v-on:click="filtersEvents(`Other`)">OTHER</button>
         </section>
         <!--Section which gathers the filters for the displayed events and all the matching events -->
         <section class="events_general_flex">
@@ -15,27 +19,33 @@
             <article class="margins">
                 <!--Div that enables the possibility to show only the user's events (created or attended) and their chronology-->
                 <div class="my_events_button">
-                    <a href="events.html">List MY EVENTS</a>
-                    <router-link to="/eventology">Visit your EVENTOLOGY</router-link>
+                    <button type="button" v-on:click="myEvents">List MY EVENTS</button>
+                    <router-link to ="/eventology"><button>Visit your EVENTOLOGY</button></router-link>
                 </div>
                 <!--Div only visible for desktop screen sizes, which shows some filters to apply on the displayed events-->
                 <div class="top_padding">
                     <!--Div that shows input filters about the event's date and location-->
                     <!--This div is not displayed at mobile screen sizes-->
                     <div class="filters_desktop">
-                        <label for="location">Chose the starting date:</label>
-                        <input type="date" id="start_date" name="event_start" min="2022-04-01">
+                        <label for="name">Search by name:</label>
+                        <input type="text" id="name" name="name" required minlength="1" maxlength="30" placeholder="name" v-model="eventName">
 
-                        <label for="start_date">Choose the location:</label>
-                        <input type="text" id="location" name="location" required minlength="1" maxlength="30" placeholder="location" />
+                        <label for="start_date">Chose the starting date:</label>
+                        <input type="date" id="start_date" name="event_start" min="2022-04-01" v-model="eventDate">
+
+                        <label for="location">Choose the location:</label>
+                        <input type="text" id="location" name="location" required minlength="1" maxlength="30" placeholder="location" v-model="eventLocation"/>
+                    </div>
+                    <div class="filters_desktop delete_filters">
+                        <button v-on:click="searchEvents">Search</button>
                     </div>
                     <!--Div that shows filters to sort the order on which the events are shown -->
-                    <div class="filter_order filters_desktop">
-                           <label><input type="checkbox" id="score_filter" value="score_filter" v-model="checked">Order by score</label>
+                    <div class="my_events_button">
+                        <button type="button" v-on:click="bestEvents">Order by SCORE</button>
                     </div>
                     <!--Div that allows deleting the filters on desktop events' web page -->
                     <div class="filters_desktop delete_filters">
-                        <a href="./events.html">Delete filters</a>
+                        <button v-on:click="getEvents">Delete filters</button>
                     </div>
                 </div>
                 <!--Div that displays the possibility of creating a new event -->
@@ -69,33 +79,35 @@
 
 <script>
     
-
     export default {
 
         beforeMount() {
-            fetch("http://puigmal.salle.url.edu/api/v2/events", {
-                method: "GET",
-                headers: {
-                    Authorization: "Bearer " + this.$root.$data.token,
-                },
-                })
-                .then((res) => {
-                    if (res.status != 200) {
-                        alert("No events were found");
-                        
-                    } else {
-                        return res.json();
-                    }
-                })
-                .then((data) => {
-                    this.event = data;
-                    console.log(this.event);
-                }
-            );
+            this.getEvents();
         },
 
         methods: {
-            checked() {
+            getEvents() {
+                fetch("http://puigmal.salle.url.edu/api/v2/events", {
+                    method: "GET",
+                    headers: {
+                        Authorization: "Bearer " + this.$root.$data.token,
+                    },
+                    })
+                    .then((res) => {
+                        if (res.status != 200) {
+                            alert("No events were found");
+                            
+                        } else {
+                            return res.json();
+                        }
+                    })
+                    .then((data) => {
+                        this.event = data;
+                        console.log(this.event);
+                    }
+                );
+            },
+            bestEvents() {
                 fetch("http://puigmal.salle.url.edu/api/v2/events/best", {
                     method: "GET",
                     headers: {
@@ -118,6 +130,98 @@
             },
             saveEventId(id) {
                 this.$root.$data.eventId = id;
+            },
+            myEvents() {
+                fetch("http://puigmal.salle.url.edu/api/v2/events", {
+                    method: "GET",
+                    headers: {
+                        Authorization: "Bearer " + this.$root.$data.token,
+                    },
+                    })
+                    .then((res) => {
+                        if (res.status != 200) {
+                            alert("No events were found");
+                        } else {
+                            return res.json();
+                        }
+                    })
+                    .then((data) => {
+                        let myEvents = [];
+                        for (var i = 0; i < data.length; i++) {
+                            if (data[i].owner_id == this.$root.$data.myId) {
+                                myEvents.push(data[i]);
+                            }
+                        }
+                        this.event = myEvents;
+                    }
+                );
+            },
+            filtersEvents(type) {
+                fetch("http://puigmal.salle.url.edu/api/v2/events", {
+                    method: "GET",
+                    headers: {
+                        Authorization: "Bearer " + this.$root.$data.token,
+                    },
+                    })
+                    .then((res) => {
+                        if (res.status != 200) {
+                            alert("No events were found");
+                        } else {
+                            return res.json();
+                        }
+                    })
+                    .then((data) => {
+                        let filterEvents = [];
+                        for (var i = 0; i < data.length; i++) {
+                            if (data[i].type == type) {
+                                filterEvents.push(data[i]);
+                            }
+                        }
+                        this.event = filterEvents;
+                    }
+                );
+            },
+            searchEvents() {
+
+                var query = "?";
+
+                if (this.eventLocation != undefined) {
+                    query = query + 'location=' + this.eventLocation;
+                }
+
+                if (this.eventName != undefined) {
+                    if (this.eventLocation != undefined) {
+                        query = query + "&";
+                    }
+                    query = query + 'keyword=' + this.eventName;
+                }
+
+                if (this.eventDate != undefined) {
+                    if (this.eveventNameentLocation != undefined || this.eventName != undefined) {
+                        query = query + "&";
+                    }
+                    query = query + 'date=' + this.eventDate;
+                }
+
+                console.log(query)
+
+                fetch("http://puigmal.salle.url.edu/api/v2/events/search" + query, {
+                    method: "GET",
+                    headers: {
+                        Authorization: "Bearer " + this.$root.$data.token,
+                    },
+                    })
+                    .then((res) => {
+                        if (res.status != 200) {
+                            alert("No events were found");
+                        } else {
+                            return res.json();
+                        }
+                    })
+                    .then((data) => {
+                        this.event = data;
+                    }
+                );
             }
         },
 
@@ -141,7 +245,7 @@
         flex-wrap: wrap;
     }
 
-    .categories_buttons a{
+    .categories_buttons button{
         font-size: 2.5rem;
         color: rgba(3, 50, 107, 0.96);
         border-radius: 10px;
@@ -169,7 +273,7 @@
         margin-top: 20px;
     }
 
-    .my_events_button a{
+    .my_events_button button{
         font-size: 2.2rem;
         color: white;
         border-radius: 10px;
@@ -189,7 +293,7 @@
         font-size: 2.3rem;
     }
 
-    .filters_desktop a {
+    .filters_desktop button {
         color: #38487c;
         font-weight: bold;
     }

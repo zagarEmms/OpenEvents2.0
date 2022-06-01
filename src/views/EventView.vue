@@ -54,7 +54,7 @@
             </section>
             <section class="event_buttons_margin">
                 <div class="event_buttons_participate"><a v-on:click="participate()">{{button}}</a></div>
-                <div class="event_buttons"><a href="./event.html">Share!</a></div>
+                <div class="event_buttons"><a v-on:click="shareButton()">Share!</a></div>
             </section>
         </div>
     </main>
@@ -142,6 +142,14 @@
                         console.log(this.event);
                     }
                 );
+            },
+            shareButton() {
+                var text = "http://localhost:8080/event";
+                navigator.clipboard.writeText(text).then(function() {
+                    alert('Link copied to clipboard');
+                }, function(err) {
+                    console.error('Async: Could not copy text: ', err);
+                });
             },
             },
              data() {
