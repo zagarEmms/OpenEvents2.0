@@ -9,8 +9,8 @@
             <!--Div which gathers the two links to legal information-->
             <div>
                 <nav>
-                    <div><a href="./terms.html"><h5 class="white">Terms of use</h5></a></div>
-                    <div><a href="./privacy.html"><h5 class="white">Privacy Policy</h5></a></div>
+                    <div><router-link to="/terms"><h5 class="white">Terms of use</h5></router-link></div>
+                    <div><router-link to="/privacy"><h5 class="white">Privacy Policy</h5></router-link></div>
                 </nav>
             </div>
         </section>
