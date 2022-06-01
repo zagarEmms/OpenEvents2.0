@@ -87,7 +87,7 @@
 
         methods: {
             getEvents() {
-                    fetch("http://puigmal.salle.url.edu/api/v2/events", {
+                fetch("http://puigmal.salle.url.edu/api/v2/events", {
                     method: "GET",
                     headers: {
                         Authorization: "Bearer " + this.$root.$data.token,

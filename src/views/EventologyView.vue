@@ -2,54 +2,93 @@
     <main>
         <div>
             <h2>Eventology</h2>
-            <h3>TODAY: 6 Sep. 2022</h3>
+            <h3>TODAY: {{currentDay}}</h3>
         </div>
         <div>
-            <article class="flex_eventology">
-                <div class="eventology_icons"><a href="./eventology.html"><img src="../assets/images/icons/left_icon.png" alt="Left icon"></a></div>
-                <div><h4 class="bold">MARCH 2022</h4></div>
-                <div class="eventology_icons"><a href="./eventology.html"><img src="../assets/images/icons/right_icon.png" alt="Right icon"></a></div>
-            </article>
             <article class="flex_eventology_events events_list eventology_list">
-                <div class="events_details eventology_details">
-                    <a href="event.html">
-                        <h3 class="event_title_box category_music">Annual Wonderland</h3>
-                        <ul>
-                            <li><img src="../assets/images/icons/party_icon.png" alt="Party icon">Description: Music Festival</li>
-                            <li><img src="../assets/images/icons/calendar_icon.png" alt="Calendar icon">Started: 28 March 2022</li>
-                            <li><img src="../assets/images/icons/calendar_icon.png" alt="Calendar icon">Ended: 30 March 2022</li>
-                        </ul>
-                    </a>
-                </div>
-                <img class="eventology_desktop_arrow" src="../assets/images/icons/arrow_icon.png" alt="Arrow">
-                <div class="events_details eventology_details">
-                    <a href="event.html">
-                        <h3 class="event_title_box category_food">Eat Fest</h3>
-                        <ul>
-                            <li><img src="../assets/images/icons/party_icon.png" alt="Party icon">Description: Eating Festival</li>
-                            <li><img src="../assets/images/icons/calendar_icon.png" alt="Calendar icon">Started: 21 March 2022</li>
-                            <li><img src="../assets/images/icons/calendar_icon.png" alt="Calendar icon">Ended: 25 March 2022</li>
-                        </ul>
-                    </a>
-                </div>
-                <img class="eventology_desktop_arrow" src="../assets/images/icons/arrow_icon.png" alt="Arrow">
-                <div class="events_details eventology_details">
-                    <a href="event.html">
-                        <h3 class="event_title_box category_travel">NightMade Travel Festival</h3>
-                        <ul>
-                            <li><img src="../assets/images/icons/party_icon.png" alt="Party icon">Description: Travel Festival</li>
-                            <li><img src="../assets/images/icons/calendar_icon.png" alt="Calendar icon">Started: 1 March 2022</li>
-                            <li><img src="../assets/images/icons/calendar_icon.png" alt="Calendar icon">Ended: 5 March 2022</li>
-                        </ul>
-                    </a>
+                <div v-for="event in event" :key="event.id">
+                    <router-link to = "/event" v-on:click="saveEventId(event.id)">
+                        <div class="events_details eventology_details">
+                            <a href="event.html">
+                                <h3 class="event_title_box category_music">{{event.name}}</h3>
+                                <ul>
+                                    <li><img src="../assets/images/icons/party_icon.png" alt="Party icon">Description: {{event.description}}</li>
+                                    <li><img src="../assets/images/icons/calendar_icon.png" alt="Calendar icon">Started: {{event.eventStart_date}}</li>
+                                    <li><img src="../assets/images/icons/calendar_icon.png" alt="Calendar icon">Ended: {{event.eventEnd_date}}</li>
+                                </ul>
+                            </a>
+                        </div>
+                    </router-link>
+                    <img class="eventology_desktop_arrow" src="../assets/images/icons/arrow_icon.png" alt="Arrow">
                 </div>
             </article>
         </div>
     </main>
 </template>
 
+<script>
+    
+    export default {
+
+        beforeMount() {
+            this.getEvents();
+        },
+
+         data() {
+            return {
+                event: [],
+                currentDay: this.getDay(),
+            }
+        },
+
+        methods: {
+                
+            getEvents() {
+
+                let id = this.$root.$data.myId;
+
+                fetch("http://puigmal.salle.url.edu/api/v2/users/" + id + "/assistances", {
+                    method: "GET",
+                    headers: {
+                        Authorization: "Bearer " + this.$root.$data.token,
+                    },
+                    })
+                    .then((res) => {
+                        if (res.status != 200) {
+                            alert("No events were found");
+                        } else {
+                            return res.json();
+                        }
+                    })
+                    .then((data) => {
+                        this.event = data;
+                        console.log(this.event);
+                    }
+                );
+            },
+            getDay() {
+                var today = new Date();
+                var dd = String(today.getDate()).padStart(2, '0');
+                var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+                var yyyy = today.getFullYear();
+
+                today = dd + '/' + mm + '/' + yyyy;
+                return today;
+            },
+            saveEventId(id) {
+                this.$root.$data.eventId = id;
+            },
+
+        },
+        name: 'EventologyView',
+
+    }
+
+</script>
+
+
 <style scoped>
-    .eventology_list div {
+    .eventology_list div div {
         margin-top: 2rem;
         margin-bottom: 2rem;
         border: 0.5rem solid #434952;
@@ -69,6 +108,7 @@
     .flex_eventology_events {
         display: flex;
         flex-direction: column;
+        max-width: 50rem;
     }
 
     .eventology_desktop_arrow {
