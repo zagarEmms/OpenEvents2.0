@@ -94,11 +94,11 @@
                         if (data[i].email == this.email) {
                             this.$root.$data.myId = data[i].id;
                             localStorage.setItem("myId", data[i].id);
+                            this.$router.push('home');
                             console.log(data[i].id);
                             break;
                         }
                     }
-                    this.$router.push('home');
                 });
 
             },

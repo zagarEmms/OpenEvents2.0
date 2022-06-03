@@ -10,7 +10,7 @@
                         <img class="profile_round" src="../assets/images/profileImg.jpg" alt="Profile Icon">
                     </div>
                     <div class="div_inline">
-                        <a href="../index.html"><h3 class="logout_profile">LOG OUT</h3></a>
+                        <router-link to="/"><h3 class="logout_profile">LOG OUT</h3></router-link>
                     </div>
                 </div>
                 <div class="flex_profile_info">
@@ -18,13 +18,11 @@
                         <h3>Name</h3>
                         <h3>Surnames</h3>
                         <h3>Email</h3>
-                        <h3>Password</h3>
                     </div>
                     <div class="profile_info_theme_input">
-                        <h3>Tom</h3>
-                        <h3>Stanley Holland</h3>
-                        <h3>tom@openevents.com</h3>
-                        <h3>asdfgh</h3>
+                        <h3>{{information.name}}</h3>
+                        <h3>{{information.last_name}}</h3>
+                        <h3>{{information.email}}</h3>
                     </div>
                 </div>
                 <div class="flex_edit_buttons">
@@ -71,6 +69,7 @@
         data() {
             return {
                 statistics: {},
+                information: {},
             }
         },
 
@@ -97,12 +96,38 @@
                     this.statistics = data;
                 }
             );
+
+            fetch("http://puigmal.salle.url.edu/api/v2/users/" + id, {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + this.$root.$data.token,
+                },
+                })
+                .then((res) => {
+                    if (res.status != 200) {
+                        alert("No information was found");
+                        
+                    } else {
+                        return res.json();
+                    }
+                })
+                .then((data) => {
+                    console.log(data);
+                    this.information = data[0];
+                }
+            );
+
         },
 
         methods: {
         
+            logOut () {
+                localStorage.removeItem('token');
+                localStorage.removeItem('myId');
+                localStorage.removeItem("eventId");
+                localStorage.removeItem("friendId");
+            }
         }
-
     }
 
 </script>
