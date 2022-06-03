@@ -66,6 +66,11 @@ const routes = [
     name: 'terms',
     component: () => import('../views/TermsView.vue')
   },
+  {
+    path: '/editEvent',
+    name: 'editEvent',
+    component: () => import('../views/EditEventView.vue')
+  },
   
 ]
 

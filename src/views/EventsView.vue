@@ -129,6 +129,7 @@
                 );
             },
             saveEventId(id) {
+                localStorage.setItem("eventId", id);
                 this.$root.$data.eventId = id;
             },
             myEvents() {

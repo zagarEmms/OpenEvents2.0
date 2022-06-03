@@ -37,19 +37,10 @@
                     </div>
                 </article>
             </section>
-            <section class="flex_event">
-                <h3 class="bold">Creator Score</h3>
-                <div class="star-container bottom_margin">
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
-                    <div class="star"></div>
+            <section class="flex_event" v-if="isMyEvent()">
+                <div>
+                    <button class="event_buttons_participate" v-on:click="editEvent()">Edit Event</button>
+                    <button class="delete_profile" v-on:click="deleteEvent()">Delete Event</button>
                 </div>
             </section>
             <section class="event_buttons_margin">
@@ -151,11 +142,46 @@
                     console.error('Async: Could not copy text: ', err);
                 });
             },
+            isMyEvent() {
+
+                let id = this.$root.$data.myId;
+                let event_id = this.$root.$data.eventId;
+                
+                fetch("http://puigmal.salle.url.edu/api/v2/events/" + event_id, {
+                    method: "GET",
+                    headers: {
+                        Authorization: "Bearer " + this.$root.$data.token,
+                    },
+                    })
+                    .then((res) => {
+                        if (res.status != 200) {
+                            alert("Error in connection");
+                        } else {
+                            return res.json();
+                        }
+                    })
+                    .then((data) => {
+                        this.owner_id = data[0].owner_id;
+                    }
+                );  
+                
+                if (id == this.owner_id) {
+                    console.log("ownerrrr")
+                    return true;
+                } else {
+                    console.log("nauuuur")
+                    return false;
+                }
+            },
+            editEvent() {
+                this.$router.push({ path: '/editEvent' });
+            },
             },
              data() {
             return {
                 event: [],
                 button: "Participate",
+                owner_id: 0,
             }
         },
     }
@@ -221,7 +247,7 @@
         margin-left: 10rem;
     }
 
-    .event_buttons_participate a {
+    .event_buttons_participate a, button {
         font-size: 4rem;
         padding: 1.5rem;
         background: #395c8a;
