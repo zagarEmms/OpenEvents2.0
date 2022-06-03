@@ -236,6 +236,7 @@ export default {
         },
 
         saveEventId(id) {
+            localStorage.setItem("eventId", id);
             this.$root.$data.eventId = id;
         },
     },
@@ -249,6 +250,20 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
+}
+
+.friends_flex_info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.friends_profile_img {
+    border-radius: 10rem;
+    width: 10rem;
+    padding-right: 2rem;
+}
+
+
 
 </style>

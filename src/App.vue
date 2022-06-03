@@ -64,26 +64,6 @@ a {
     margin-top: 20px;
 }
 
-.friend_info{
-    align-items: flex-start;
-}
-
-.friends_profile_img {
-    border-radius: 10rem;
-    width: 10rem;
-    padding-right: 2rem;
-}
-
-.friends_flex_info {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-.info_friend{
-    align-items: flex-start;
-}
-
 .friend_add {
     padding: 2rem;
     background-color: #8046A887;
@@ -173,7 +153,7 @@ a {
     }
 
     h2 {
-        font-size: 8rem;
+        font-size: 7rem;
     }
 
     h3 {
