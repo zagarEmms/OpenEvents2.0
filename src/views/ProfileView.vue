@@ -93,7 +93,7 @@
                 })
                 .then((data) => {
                     console.log(data);
-                    this.statistics = data;
+                    this.statistics = data[0];
                 }
             );
 
