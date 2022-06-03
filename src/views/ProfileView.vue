@@ -29,40 +29,84 @@
                 </div>
                 <div class="flex_edit_buttons">
                     <div class="div_inline">
-                        <div class="div_inline"><a href="./profile.html"><img class="edit_profile_img" src="../assets/images/icons/edit_icon.png" alt="Edit Icon"></a></div>
-                        <div class="div_inline"><a href="./profile.html"><h4 class="edit_profile_link">edit your information</h4></a></div>
-                    </div>
-                    <div>
-                        <a href="./profile.html"><h3 class="done_profile">DONE</h3></a>
+                        <div class="div_inline"><router-link to="/editProfile"><img class="edit_profile_img" src="../assets/images/icons/edit_icon.png" alt="Edit Icon"></router-link></div>
+                        <div class="div_inline"><router-link to="/editProfile"><h4 class="edit_profile_link">edit your information</h4></router-link></div>
                     </div>
                 </div>
             </article>
             <article>
                 <div>
-                    <h3 class="home_title">Your Statistics</h3>
-                </div>
-                <h3 class="score_profile">Score</h3>
-                <div>
-                    <div class="star-container">
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                        <div class="star"></div>
-                    </div>
+                    <h3 class="home_title bold">Your Statistics</h3>
                 </div>
                 <div class="comments_profile">
-                    <h3>users % with less comments </h3>
-                    <h3 class="users_profile">30</h3>
+                    <h4>Average Score:</h4>
+                    <h4 class="users_profile" v-if="statistics.avg_score == null">0</h4>
+                    <h4 class="users_profile" v-if="statistics.avg_score != null">{{statistics.avg_score}}</h4>
+                </div>
+                <div class="comments_profile">
+                    <h4>Number of Comments:</h4>
+                    <h4 class="users_profile" v-if="statistics.num_comments == 0">0</h4>
+                    <h4 class="users_profile" v-if="statistics.num_comments != 0">{{statistics.num_comments}}</h4>
+                </div>
+                <div class="comments_profile">
+                    <h4>Users % with Less Comments</h4>
+                    <h4 class="users_profile" v-if="statistics.percentage_commenters_below == null">0</h4>
+                    <h4 class="users_profile" v-if="statistics.percentage_commenters_below != null">{{statistics.percentage_commenters_below}}</h4>
                 </div>
                 <div class="divisor_color"></div>
                 <div>
-                    <a href="delete.html"><h3 class="delete_profile">DELETE ACCOUNT</h3></a>
+                    <router-link to="/delete"><h3 class="delete_profile">DELETE ACCOUNT</h3></router-link>
                 </div>
             </article>
         </section>
     </main>
 </template>
+
+<script>
+
+    export default {
+        
+        name: 'ProfileView',
+
+        data() {
+            return {
+                statistics: {},
+            }
+        },
+
+        beforeMount() {
+
+            let id = this.$route.params.myId;
+
+            fetch("http://puigmal.salle.url.edu/api/v2/users/" + id + "/statistics", {
+                method: "GET",
+                headers: {
+                    Authorization: "Bearer " + this.$root.$data.token,
+                },
+                })
+                .then((res) => {
+                    if (res.status != 200) {
+                        alert("No statistics were found");
+                        
+                    } else {
+                        return res.json();
+                    }
+                })
+                .then((data) => {
+                    console.log(data);
+                    this.statistics = data;
+                }
+            );
+        },
+
+        methods: {
+        
+        }
+
+    }
+
+</script>
+
 
 <style scoped>
     .flex_profile {

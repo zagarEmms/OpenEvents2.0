@@ -57,11 +57,6 @@ const routes = [
     component: () => import('../views/ProfileView.vue')
   },
   {
-    path: '/search',
-    name: 'search',
-    component: () => import('../views/SearchView.vue')
-  },
-  {
     path: '/terms',
     name: 'terms',
     component: () => import('../views/TermsView.vue')
@@ -70,6 +65,11 @@ const routes = [
     path: '/editEvent',
     name: 'editEvent',
     component: () => import('../views/EditEventView.vue')
+  },
+  {
+    path: '/editProfile',
+    name: 'editProfile',
+    component: () => import('../views/EditProfileView.vue')
   },
   
 ]
