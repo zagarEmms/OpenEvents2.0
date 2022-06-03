@@ -166,24 +166,44 @@
                 );  
                 
                 if (id == this.owner_id) {
-                    console.log("ownerrrr")
                     return true;
                 } else {
-                    console.log("nauuuur")
                     return false;
                 }
             },
             editEvent() {
                 this.$router.push({ path: '/editEvent' });
             },
+            deleteEvent() {
+
+                let id = this.$root.$data.eventId;
+
+                fetch("http://puigmal.salle.url.edu/api/v2/events/" + id, {
+                    method: "DELETE",
+                    headers: {
+                        Authorization: "Bearer " + this.$root.$data.token,
+                    },
+                    })
+                    .then((res) => {
+                        if (res.status != 200) {
+                            alert("Error in connection");
+                        } else {
+                            return res.json();
+                        }
+                    })
+                    .then(() => {
+                        this.$router.push({ path: '/events' });
+                    }
+                );
             },
-             data() {
+        },
+        data() {
             return {
                 event: [],
                 button: "Participate",
                 owner_id: 0,
             }
-        },
+        }
     }
 </script>
 

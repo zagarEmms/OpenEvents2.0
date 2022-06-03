@@ -10,12 +10,6 @@
                 <div>
                     <!--Nav which gathers the links (presented into the shape of images) to the sections of the OpenEvents' website-->
                     <nav>
-                        <router-link to="/search">
-                            <img
-                                src="../assets/images/icons/search_icon.png"
-                                alt="search icon"
-                            />
-                        </router-link>
                         <router-link to="/events">
                             <img
                                 src="../assets/images/icons/party_icon.png"
