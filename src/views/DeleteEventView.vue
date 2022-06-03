@@ -14,7 +14,7 @@
                 <p class="delete_size">All your personal information will be deleted </p>
             </article>
             <article>
-                <a v-on:click="deleteUser()"><h3 class="delete_profile_anyway">DELETE ANYWAY</h3></a>
+                <router-link to="/" v-on:click="deleteUser()"><h3 class="delete_profile_anyway">DELETE ANYWAY</h3></router-link>
             </article>
             <article>
                 <router-link to="/profile"><h3 class="delete_cancel">CANCEL</h3></router-link>
@@ -66,7 +66,7 @@
 
             deleteUser () {
                 fetch("http://puigmal.salle.url.edu/api/v2/users/", {
-                    method: "DEELETE",
+                    method: "DELETE",
                     headers: {
                         Authorization: "Bearer " + this.$root.$data.token,
                     },
@@ -74,13 +74,15 @@
                     .then((res) => {
                         if (res.status != 200) {
                             alert("No users were found");
-                            
                         } else {
                             return res.json();
                         }
                     })
                     .then(() => {
-                        this.$router.push('/');
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('myId');
+                        localStorage.removeItem("eventId");
+                        localStorage.removeItem("friendId");
                     }
                 );
             }
