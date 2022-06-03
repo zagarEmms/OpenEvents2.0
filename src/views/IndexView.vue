@@ -71,6 +71,7 @@
                     }
                 })
                 .then((data) => {
+                    this.$root.$data.token = data.accessToken;
                     localStorage.setItem("token", data.accessToken);
                 });
 
@@ -84,13 +85,14 @@
                     if (res.status == 200) {
                         return res.json();
                     } else {
-                        alert("Wrong credentials");
+                        alert("Wrong credentials 2");
                     }
                 })
                 .then(data => {
                     console.log(data);
                     for (var i = 0; i < data.length; i++) {
                         if (data[i].email == this.email) {
+                            this.$root.$data.myId = data[i].id;
                             localStorage.setItem("myId", data[i].id);
                             console.log(data[i].id);
                             break;

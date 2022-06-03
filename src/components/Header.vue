@@ -45,6 +45,7 @@
 		name: 'HeaderHeader',
         methods: {
             signout() {
+                console.log('signout');
                 localStorage.removeItem('token');
                 localStorage.removeItem('myId');
                 localStorage.removeItem("eventId");

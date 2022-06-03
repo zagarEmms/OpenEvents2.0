@@ -49,7 +49,7 @@
                     <h4 class="users_profile" v-if="statistics.num_comments != 0">{{statistics.num_comments}}</h4>
                 </div>
                 <div class="comments_profile">
-                    <h4>Users % with Less Comments</h4>
+                    <h4>Users % with Less Comments:</h4>
                     <h4 class="users_profile" v-if="statistics.percentage_commenters_below == null">0</h4>
                     <h4 class="users_profile" v-if="statistics.percentage_commenters_below != null">{{statistics.percentage_commenters_below}}</h4>
                 </div>
@@ -76,7 +76,7 @@
 
         beforeMount() {
 
-            let id = this.$route.params.myId;
+            let id = this.$root.$data.myId;
 
             fetch("http://puigmal.salle.url.edu/api/v2/users/" + id + "/statistics", {
                 method: "GET",

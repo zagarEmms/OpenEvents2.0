@@ -109,34 +109,6 @@ a {
     background-color: rgba(215, 174, 36, 0.87);
 }
 
-.delete_size {
-    font-size: 2.5rem;
-}
-
-.delete_profile_anyway {
-    padding: 2rem;
-    color: whitesmoke;
-    background-color: darkred;
-    border-radius: 5rem;
-}
-
-.delete_profile_anyway:hover {
-    background-color: whitesmoke;
-    color: darkred;
-}
-
-.delete_cancel {
-    padding: 2rem;
-    color: darkred;
-    background-color: whitesmoke;
-    border-radius: 5rem;
-}
-
-.delete_cancel:hover {
-    background-color: darkred;
-    color: whitesmoke;
-}
-
     main {
         padding: 20px;
         min-height: calc(
