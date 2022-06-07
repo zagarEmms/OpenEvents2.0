@@ -170,36 +170,6 @@ a {
         border-radius: 9px;
     }
 
-    .star-container {
-        display: flex;
-        align-items: flex-start;
-    }
-
-    .star:before {
-        content: "\f005";
-        font-family: fontAwesome;
-        font-size: 60px;
-        position: relative;
-        display: block;
-        color: #aaa;
-    }
-
-    .star:after {
-        content: "\f005";
-        font-family: fontAwesome;
-        top: 7px;
-        font-size: 60px;
-        color: gold;
-        opacity: 0;
-    }
-
-    .star:hover:after,
-    .star:hover ~ .star:after,
-    .star.star__checked:after,
-    .star.star__checked ~ .star:after{
-        opacity: 1;
-    }
-
     footer {
         background: #011936;
     }
