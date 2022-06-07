@@ -55,7 +55,7 @@
                     })
                     .then((res) => {
                         if (res.status != 200) {
-                            alert("No events were found");
+                            console.log("No events were found");
                         } else {
                             return res.json();
                         }

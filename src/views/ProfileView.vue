@@ -85,7 +85,7 @@
                 })
                 .then((res) => {
                     if (res.status != 200) {
-                        alert("No statistics were found");
+                        console.log("No statistics were found");
                         
                     } else {
                         return res.json();
@@ -105,7 +105,7 @@
                 })
                 .then((res) => {
                     if (res.status != 200) {
-                        alert("No information was found");
+                        console.log("No information was found");
                         
                     } else {
                         return res.json();

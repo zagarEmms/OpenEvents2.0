@@ -104,7 +104,7 @@
             })
             .then((res) => {
                     if (res.status != 200) {
-                        alert("No friends were found");
+                        console.log("No friends were found");
                         
                     } else {
                         return res.json();
@@ -124,7 +124,7 @@
             })
             .then((res) => {
                     if (res.status != 200) {
-                        alert("No friends were found");
+                        console.log("No friends were found");
                         
                     } else {
                         return res.json();
@@ -144,7 +144,7 @@
                 })
                 .then((res) => {
                     if (res.status != 200) {
-                        alert("No users were found");
+                        console.log("No users were found");
                         
                     } else {
                         return res.json();
@@ -168,7 +168,7 @@
                     })
                     .then((res) => {
                         if (res.status != 200) {
-                            alert("No users were found");
+                            console.log("No users were found");
                             
                         } else {
                             return res.json();

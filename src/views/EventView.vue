@@ -68,7 +68,7 @@
                 })
                 .then((res) => {
                     if (res.status != 200) {
-                        alert("No events were found");
+                        console.log("No events were found");
                         
                     } else {
                         return res.json();
@@ -90,7 +90,7 @@
                 })
                 .then((res) => {
                     if (res.status != 200) {
-                        alert("No events were found");
+                        console.log("No events were found");
                     } else {
                         return res.json();
                     }
@@ -122,7 +122,7 @@
                     })
                     .then((res) => {
                         if (res.status != 200) {
-                            alert("Error in connection");
+                            console.log("Error in connection");
                         } else {
                             return res.json();
                         }
@@ -136,7 +136,7 @@
             shareButton() {
                 var text = "http://localhost:8080/event";
                 navigator.clipboard.writeText(text).then(function() {
-                    alert('Link copied to clipboard');
+                    console.log('Link copied to clipboard');
                 }, function(err) {
                     console.error('Async: Could not copy text: ', err);
                 });
@@ -154,7 +154,7 @@
                     })
                     .then((res) => {
                         if (res.status != 200) {
-                            alert("Error in connection");
+                            console.log("Error in connection");
                         } else {
                             return res.json();
                         }
@@ -185,7 +185,7 @@
                     })
                     .then((res) => {
                         if (res.status != 200) {
-                            alert("Error in connection");
+                            console.log("Error in connection");
                         } else {
                             return res.json();
                         }

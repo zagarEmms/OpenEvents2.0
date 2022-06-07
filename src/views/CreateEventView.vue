@@ -72,7 +72,6 @@
                 })
                 .then((res) => {
                     if (res.status != 200) {
-                        console.log(res)
                         alert("Missing parameters");
                     } else {
                         return res.json();

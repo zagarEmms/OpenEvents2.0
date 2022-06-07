@@ -104,7 +104,7 @@ export default {
                 })
                 .then((res) => {
                     if (res.status != 200) {
-                        alert("No users were found");
+                        console.log("No users were found");
                         
                     } else {
                         return res.json();
@@ -124,7 +124,7 @@ export default {
                 })
                 .then((res) => {
                     if (res.status != 200) {
-                        alert("No events were found");
+                        console.log("No events were found");
                         
                     } else {
                         return res.json();
@@ -144,7 +144,7 @@ export default {
                 })
                 .then((res) => {
                     if (res.status != 200) {
-                        alert("No statistics were found");
+                        console.log("No statistics were found");
                         
                     } else {
                         return res.json();
@@ -164,7 +164,7 @@ export default {
                 })
                 .then((res) => {
                     if (res.status != 200) {
-                        alert("No friends were found");
+                        console.log("No friends were found");
                         
                     } else {
                         return res.json();
@@ -189,7 +189,7 @@ export default {
             })
             .then((res) => {
                     if (res.status != 200) {
-                        alert("No friends were found");
+                        console.log("No friends were found");
                         
                     } else {
                         return res.json();
@@ -222,7 +222,7 @@ export default {
             })
             .then((res) => {
                 if (res.status != 201) {
-                    alert("Already requested");
+                    console.log("Already requested");
                 } else {
                     return res.json();
                 }
