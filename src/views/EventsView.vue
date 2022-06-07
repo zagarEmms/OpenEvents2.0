@@ -22,6 +22,10 @@
                     <button type="button" v-on:click="myEvents">List MY EVENTS</button>
                     <router-link to ="/eventology"><button>Visit your EVENTOLOGY</button></router-link>
                 </div>
+                <!--Div that shows filters to sort the order on which the events are shown -->
+                <div class="my_events_button_score">
+                    <button type="button" v-on:click="bestEvents">Order by SCORE</button>
+                </div>
                 <!--Div only visible for desktop screen sizes, which shows some filters to apply on the displayed events-->
                 <div class="top_padding">
                     <!--Div that shows input filters about the event's date and location-->
@@ -38,10 +42,6 @@
                     </div>
                     <div class="filters_desktop search_filters">
                         <button v-on:click="searchEvents">Search</button>
-                    </div>
-                    <!--Div that shows filters to sort the order on which the events are shown -->
-                    <div class="my_events_button">
-                        <button type="button" v-on:click="bestEvents">Order by SCORE</button>
                     </div>
                     <!--Div that allows deleting the filters on desktop events' web page -->
                     <div class="filters_desktop delete_filters">
@@ -293,6 +293,26 @@
         border-color: rgba(3, 50, 107, 0.96);
         padding: 10px 8px;
         margin-top: 15px;
+    }
+
+    .my_events_button_score button {
+        font-size: 2.2rem;
+        color: black;
+        border-radius: 10px;
+        background: rgb(203, 217, 236);
+        border-color: rgba(3, 50, 107, 0.96);
+        padding: 10px 8px;
+        margin-top: 20px;
+    }
+
+    .my_events_button_score button:hover{
+        font-size: 2.2rem;
+        color: white;
+        border-radius: 10px;
+        border-color: rgb(203, 217, 236);
+        background: rgba(3, 50, 107, 0.96);
+        padding: 10px 8px;
+        margin-top: 20px;
     }
 
     .top_padding {
