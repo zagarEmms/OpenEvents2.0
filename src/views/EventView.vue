@@ -81,9 +81,8 @@
             );
 
             let user_id = this.$root.$data.myId;
-            let event_id = this.$root.$data.eventId;
 
-            fetch("http://puigmal.salle.url.edu/api/v2/assistances/" + user_id + "/" + event_id, {
+            fetch("http://puigmal.salle.url.edu/api/v2/users/" + user_id + "/assistances", {
                 method: "GET",
                 headers: {
                     Authorization: "Bearer " + this.$root.$data.token,
@@ -92,17 +91,17 @@
                 .then((res) => {
                     if (res.status != 200) {
                         alert("No events were found");
-                        
                     } else {
                         return res.json();
                     }
                 })
                 .then((data) => {
-                    alert(data[0].user_id);
-                    if (data[0].user_id == user_id) { 
-                        this.button = "Participating!";
-                    } else {
-                        this.button = "Participate";
+                    for (var i = 0; i < data.length; i++) {
+                        console.log(data)
+                        if (data[i].id == id) {
+                            this.button = "Participating!";
+                            break;
+                        }
                     }
                 }
             );

@@ -62,7 +62,7 @@
                     })
                     .then((data) => {
                         this.event = data;
-                        console.log(this.event);
+                        console.log(data);
                     }
                 );
             },
