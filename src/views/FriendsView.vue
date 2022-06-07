@@ -3,15 +3,18 @@
         <div>
             <section class="search">
                 <h2>Discover new people</h2>
-                <label for="name">Search people here:</label>
                 <article class="inline_search">
                     <input type="text" id="name" name="name" required minlength="1" maxlength="30" placeholder="Name, last name or email" v-model="userSearch">
                     <a id="search" v-on:click="searchUser()"><img src="../assets/images/icons/search_icon.png" width="24" height="24" alt="Search"></a>
+                    <a id="clear" v-on:click="clearSearchUser()"><img src="../assets/images/icons/close_icon.png" width="24" height="24" alt="Search"></a>
                 </article>
                 <div v-for="search in search" :key="search.id">
                     <router-link to="/friendProfile" v-on:click="saveFriendId(search.id)">
                         <article class="friends_flex_info">
-                            <div><img class="friends_profile_img" :src="search.image" alt="Profile Icon"></div>
+                            <div>               
+                                <img v-if="search.image.includes('https://')" class="profile_round" :src="search.image" alt="Profile Icon" width="80">
+                                <img v-if="!search.image.includes('https://')" class="profile_round" src="../assets/images/profileImg.jpg" alt="Profile Icon" width="80">                        
+                            </div>                            
                             <div class="friend_info">
                                 <div><h3 class="black">{{search.name}} {{search.last_name}}</h3></div>
                                 <div><h3 class="black">{{search.email}}</h3></div>
@@ -31,7 +34,10 @@
                 <div v-else, v-for="request in request" :key="request.id">
                     <router-link to="/friendProfile" v-on:click="saveFriendId(friend.id)">
                         <article class="friends_flex_info">
-                            <div><img class="friends_profile_img" :src="request.image" alt="Profile Icon"></div>
+                            <div>
+                                <img v-if="request.image.includes('https://')" class="profile_round" :src="request.image" alt="Profile Icon" width="80">
+                                <img v-if="!request.image.includes('https://')" class="profile_round" src="../assets/images/profileImg.jpg" alt="Profile Icon" width="80">                        
+                            </div>
                             <div class="friend_info">
                                 <div><h3 class="black">{{request.name}} {{request.last_name}}</h3></div>
                                 <div><h3 class="black">{{request.email}}</h3></div>
@@ -53,7 +59,10 @@
                 <div v-else, v-for="friend in friend" :key="friend.id">
                     <router-link to="/friendProfile" v-on:click="saveFriendId(friend.id)">
                         <article class="friends_flex_info">
-                            <div><img class="friends_profile_img" :src="friend.image" alt="Profile Icon"></div>
+                            <div>                       
+                                <img v-if="friend.image.includes('https://')" class="profile_round" :src="friend.image" alt="Profile Icon" width="80">
+                                <img v-if="!friend.image.includes('https://')" class="profile_round" src="../assets/images/profileImg.jpg" alt="Profile Icon" width="80">                        
+                            </div>                            
                             <div class="friend_info">
                                 <div><h3 class="black">{{friend.name}} {{friend.last_name}}</h3></div>
                                 <div><h3 class="black">{{friend.email}}</h3></div>
@@ -70,7 +79,10 @@
                 <div v-for="user in user" :key="user.id">
                     <router-link to="/friendProfile" v-on:click="saveFriendId(user.id)">
                         <article class="friends_flex_info">
-                            <div><img class="friends_profile_img" :src="user.image" alt="Profile Icon"></div>
+                            <div>
+                                <img v-if="user.image.includes('https://')" class="profile_round" :src="user.image" alt="Profile Icon" width="80">
+                                <img v-if="!user.image.includes('https://')" class="profile_round" src="../assets/images/profileImg.jpg" alt="Profile Icon" width="80">                        
+                            </div>
                             <div class="friend_info">
                                 <div><h3 class="black">{{user.name}} {{user.last_name}}</h3></div>
                                 <div><h3 class="black">{{user.email}}</h3></div>
@@ -181,6 +193,10 @@
                 );
             },
 
+            clearSearchUser() {
+                this.search = [];
+            },
+
             saveFriendId(id) {
                 localStorage.setItem("friend_id", id);
                 this.$root.$data.userId = id;
@@ -237,7 +253,7 @@
     }
 
     .inline_search {
-        background-color: #b3c1e5;
+        background-color: #d6dcec;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -293,14 +309,18 @@
 
     .friend_request {
         padding: 1rem;
-        background-color: #8046A887;
+        background-color: #a172bea4;
         color: black;
         border-radius: 2rem;
+        border-width: 1px;
+        border-color: #a172bea4;
+        margin: 20px 5px;
+        
     }
 
     .friend_request:hover {
         background-color: whitesmoke;
-        color: #8046A887;
+        color: black;
 
     }
     

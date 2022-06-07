@@ -24,7 +24,10 @@
                 </div>
                 <div class="friends_flex_info" v-for="event in event" :key="event.id">
                     <router-link to = "/event" v-on:click="saveEventId(event.id)">
-                        <div><img class="friends_profile_img" :src="event.image" alt="Profile Icon"></div>
+                        <div>
+                            <img v-if="event.image.includes('https://')" :src="event.image" alt="Event Icon" width="100">
+                            <img v-if="!event.image.includes('https://')" src="../assets/images/events/roller_coaster_event.jpg" alt="Event Icon" width="100">                        
+                        </div>
                         <div class="friend_info">
                             <div><h3 class="black">{{event.name}}</h3></div>
                             <div><h3 class="black">{{event.type}}</h3></div>
@@ -63,7 +66,10 @@
                 </div>
                 <div class="friends_flex_info" v-for="friend in friend" :key="friend.id">
                     <router-link to ="/friendProfile" v-on:click="getInfo(friend.id)">
-                        <div><img class="friends_profile_img" :src="friend.image" alt="Profile Icon"></div>
+                        <div>
+                            <img v-if="friend.image.includes('https://')" class="profile_round" :src="friend.image" alt="Profile Icon" width="100">
+                            <img v-if="!friend.image.includes('https://')" class="profile_round" src="../assets/images/profileImg.jpg" alt="Profile Icon" width="100">                        
+                        </div>
                         <div><h3 class="black">{{friend.name}} {{friend.last_name}}</h3></div>
                     </router-link>
                 </div>

@@ -7,7 +7,8 @@
                 </div>
                 <div class="div_inline">
                     <div class="div_inline">
-                        <img class="profile_round" src="../assets/images/profileImg.jpg" alt="Profile Icon">
+                        <img v-if="information.image.includes('https://')" class="profile_round" :src="information.image" alt="Profile Icon" width="100">
+                        <img v-if="!information.image.includes('https://')" class="profile_round" src="../assets/images/profileImg.jpg" alt="Profile Icon" width="100">                        
                     </div>
                     <div class="div_inline">
                         <router-link to="/"><h3 class="logout_profile">LOG OUT</h3></router-link>

@@ -62,8 +62,9 @@
                 <div class="events_details" v-for="event in event" :key="event.id" >
                     <!--Every event is clickable, so it redirects to the specific event page with all its information -->
                     <router-link to = "/event" v-on:click="saveEventId(event.id)">
-                        <div><img class="img_events" src="../assets/images/events/roller_coaster_event.jpg" alt="rollercoaster_image" width="450"></div>
-                        <h3 class="event_title_box category_travel">{{event.name}}</h3>
+                        <div v-if="!event.image.includes('https://')"><img class="img_events" src="../assets/images/events/roller_coaster_event.jpg" alt="default_event_image"></div>
+                        <div v-if="event.image.includes('https://')" ><img class="img_events" :src="event.image" alt="event_image"></div>
+                        <h3 class="event_title_box">{{event.name}}</h3>
                         <!--The details are set in a list with three specific points-->
                         <ul>
                             <li><img src="../assets/images/icons/location_icon.png" alt="">Location: {{event.location}}</li>
@@ -300,19 +301,15 @@
         color: black;
         border-radius: 10px;
         background: rgb(203, 217, 236);
-        border-color: rgba(3, 50, 107, 0.96);
-        padding: 10px 8px;
-        margin-top: 20px;
+        border-color: rgba(255, 255, 255, 0.96);
+        padding: 5px 8px;
+        margin-top: 25px;
     }
 
     .my_events_button_score button:hover{
-        font-size: 2.2rem;
-        color: white;
-        border-radius: 10px;
+        color: black;
         border-color: rgb(203, 217, 236);
-        background: rgba(3, 50, 107, 0.96);
-        padding: 10px 8px;
-        margin-top: 20px;
+        background: rgba(214, 195, 112, 0.96);
     }
 
     .top_padding {
@@ -349,7 +346,7 @@
         color: #38487c;
         border-radius: 10px;
         border: 1px solid rgba(97, 117, 184, 0.32);
-        padding: 5px 8px;
+        padding: 8px 15px;
     }
 
     .delete_filters{
@@ -395,6 +392,12 @@
         flex-direction: row;
         padding: 8px;
         flex-wrap: wrap;
+    }
+
+    .img_events{
+        border-radius: 8px;
+        height: 200px;
+        width: 300px;
     }
 
     .event_title_box{

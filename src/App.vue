@@ -209,7 +209,6 @@ a {
 
     .profile_round {
         border-radius: 50rem;
-        width: 20rem;
     }
 
     .logout_profile {
@@ -318,11 +317,6 @@ a {
     .order_filter{
         display: flex;
         flex-direction: row;
-    }
-
-    .img_events{
-        border-radius: 8px;
-        width: 300px;
     }
 
     .bottom_margin {

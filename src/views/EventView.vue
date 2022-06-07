@@ -1,5 +1,5 @@
 <template>
-    <main class="container main">
+    <main class="container">
         <div class="rc_bkg flex_event">
             <h3 class="event_title">{{event[0].name}}</h3>
         </div>
@@ -209,7 +209,6 @@
 <style scoped>
     .rc_bkg {
         background-image: url("../assets/images/events/roller_coaster_event.jpg");
-        background-size: cover;
         background-position: center;
         padding-bottom: 70px;
         padding-top: 50px;
