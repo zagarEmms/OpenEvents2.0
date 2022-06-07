@@ -28,10 +28,6 @@
 </script>
 
 <style>
-  
-.container {
-    width: 100%;
-}
 
 :root {
     --footer-height: 50px;
@@ -40,6 +36,10 @@
 
 body {
     margin: 0;
+}
+
+.container {
+    width: 100%;
 }
 
 * {
@@ -79,34 +79,6 @@ a {
 
 .bold {
     font-weight: bold;
-}
-
-.category_music{
-    background-color: rgba(140, 64, 143, 0.71);
-}
-
-.category_education{
-    background-color: rgba(215, 52, 52, 0.32);
-}
-
-.category_sports{
-    background-color: rgba(52, 128, 215, 0.32);
-}
-
-.category_games{
-    background-color: rgba(128, 70, 168, 0.32);
-}
-
-.category_travel{
-    background-color: rgba(65, 155, 67, 0.59);
-}
-
-.category_food{
-    background-color: rgba(220, 103, 6, 0.62);
-}
-
-.category_other{
-    background-color: rgba(215, 174, 36, 0.87);
 }
 
     main {

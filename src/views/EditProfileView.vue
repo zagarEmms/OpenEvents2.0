@@ -10,8 +10,8 @@
                         <h3>Name</h3>
                         <h3>Surnames</h3>
                         <h3>Email</h3>
-                        <h3>Password</h3>
-                        <h3>Password</h3>
+                        <h3>New Password</h3>
+                        <h3>Confirm Password</h3>
                     </div>
                     <div class="profile_info_theme_input">
                         <form>
@@ -24,12 +24,8 @@
                         </form>
                     </div>
                 </div>
-                <div class="flex_edit_buttons">
-                    <div class="div_inline">
-                        <div class="div_inline">
-                            <a v-on:click="updateUser()"><h4 class="done_button">SHAVE CHANGES</h4></a>
-                        </div>
-                    </div>
+                <div>
+                    <a v-on:click="updateUser()"><h4 class="done_button">SHAVE CHANGES</h4></a>
                 </div>
             </article>
     </main>
@@ -141,6 +137,7 @@
 
     .profile_info_theme h3 {
         justify-items: center;
+        margin: 3.5rem 4rem;
     }
 
     .profile_info_theme_input form input {
@@ -152,8 +149,10 @@
         font-weight: lighter;
         width: 200px;
         padding: 1.5rem;
-        margin-left: 2rem;
+        margin-right: 3rem;
+        margin: 3.5rem 0;
     }
+
     .done_button{
         border: none;
         font-size: 2rem;

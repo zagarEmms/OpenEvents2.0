@@ -36,7 +36,7 @@
                         <label for="location">Choose the location:</label>
                         <input type="text" id="location" name="location" required minlength="1" maxlength="30" placeholder="location" v-model="eventLocation"/>
                     </div>
-                    <div class="filters_desktop delete_filters">
+                    <div class="filters_desktop search_filters">
                         <button v-on:click="searchEvents">Search</button>
                     </div>
                     <!--Div that shows filters to sort the order on which the events are shown -->
@@ -248,17 +248,19 @@
 
     .categories_buttons button{
         font-size: 2.5rem;
-        color: rgba(3, 50, 107, 0.96);
+        background: rgb(208, 221, 238);
         border-radius: 10px;
-        border: 2px solid rgba(3, 50, 107, 0.96);
+        border: 2px solid rgba(97, 117, 184, 0.32);
         padding: 10px 8px;
         margin: 0 10px;
     }
 
-    .categories_buttons a:hover{
-        background: rgb(168, 190, 218);
+    .categories_buttons button:hover{
         border-color: rgb(168, 190, 218);
-        color: rgba(3, 50, 107, 0.96);
+        background: rgba(51, 75, 153, 0.829);
+        color: white;
+        font-weight: bold;
+        
     }
 
     .events_general_flex{
@@ -271,20 +273,30 @@
         flex-direction: column;
         min-width: 150px;
         align-items: flex-start;
-        margin-top: 20px;
     }
 
     .my_events_button button{
         font-size: 2.2rem;
         color: white;
         border-radius: 10px;
+        border-color: rgb(203, 217, 236);
         background: rgba(3, 50, 107, 0.96);
         padding: 10px 8px;
         margin-top: 15px;
     }
 
+    .my_events_button button:hover{
+        font-size: 2.2rem;
+        color: black;
+        border-radius: 10px;
+        background: rgb(203, 217, 236);
+        border-color: rgba(3, 50, 107, 0.96);
+        padding: 10px 8px;
+        margin-top: 15px;
+    }
+
     .top_padding {
-        padding-top: 5rem;
+        padding-top: 8rem;
     }
 
     .filters_desktop{
@@ -299,26 +311,40 @@
         font-weight: bold;
     }
 
-    .filter_order div{
-        display: flex;
-        flex-direction: row;
-        font-size: 2.3rem;
+    label {
+        font-size: 2.5rem;
+        font-weight: bold;
     }
 
-    .filter_order div label{
-        margin-bottom: 1.5rem;
+    input {
+        border-radius: 10px;
+        border: 1px solid rgba(97, 117, 184, 0.32);
+        padding: 5px 8px;
+        margin-bottom: 12px;
+        margin-top: 3px;
     }
 
-    input[type="radio"]{
-        width: 1.15em;
-        height: 1.15em;
+    .search_filters button {
+        font-size: 2.5rem;
+        color: #38487c;
+        border-radius: 10px;
+        border: 1px solid rgba(97, 117, 184, 0.32);
+        padding: 5px 8px;
     }
 
     .delete_filters{
         margin-top: 3rem;
         margin-bottom: 5rem;
-        text-align: right;
         font-weight: bold;
+    }
+
+    .delete_filters button {
+        font-size: 2.5rem;
+        color: #7c3838;
+        border-radius: 10px;
+        border: 1px solid rgba(184, 97, 97, 0.32);
+        padding: 5px 8px;
+        margin-top: 4rem;
     }
 
     .box_eventer{
@@ -328,7 +354,7 @@
         border-radius: 8px;
         padding: 0 15px;
         margin: 20px 0;
-        align-items: flex-start;
+        align-items: center;
     }
 
     .box_eventer h5{
@@ -338,7 +364,7 @@
 
     .button_create_event{
         color: white;
-        background: rgba(3, 50, 107, 0.96);
+        background: rgba(36, 46, 58, 0.96);
         border-radius: 8px;
         padding: 8px 10px;
         font-size: 2.5rem;
@@ -349,6 +375,18 @@
         flex-direction: row;
         padding: 8px;
         flex-wrap: wrap;
+    }
+
+    .event_title_box{
+        margin-top: 0;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        width: 300px;
+        padding: 15px 0;
+        text-align: center;
+        font-size: 3rem;
+        background-color: rgba(97, 117, 184, 0.32);
+
     }
 
     .events_details a{

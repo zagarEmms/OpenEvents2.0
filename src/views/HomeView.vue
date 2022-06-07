@@ -30,13 +30,11 @@
 <style scoped>
 
     #home_background {
-        background: #eef3f8;
         background: linear-gradient(60deg, #bfbaff 0%, #ecedfd 70%);
     }
 
-    .flex_home div  {
+    .flex_home div {
         display: flex;
-        flex-direction: row;
         align-items: center;
     }
 
@@ -44,7 +42,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        margin: 20px 200px;
+        align-items: center;    
     }
 
     .friendsHome {

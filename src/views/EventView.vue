@@ -1,5 +1,5 @@
 <template>
-    <main class="container">
+    <main class="container main">
         <div class="rc_bkg flex_event">
             <h3 class="event_title">{{event[0].name}}</h3>
         </div>
@@ -213,7 +213,6 @@
         background-position: center;
         padding-bottom: 70px;
         padding-top: 50px;
-        width: 100%;
         margin-bottom: 2rem;
     }
 
@@ -242,6 +241,7 @@
     .flex_event_row {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
     }
 
     .event_description_size {

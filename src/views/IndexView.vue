@@ -173,7 +173,7 @@
         width: 50rem;
         box-shadow:5px 5px 10px rgba(48, 68, 94, 0.35);
         border-radius: 10px;
-        padding: 0 15px;
+        padding: 8px 15px;
         border: none;
     }
 
