@@ -3,15 +3,16 @@
         <!--h2 for the web's section title -->
         <h2 class="home_title">Discover Events</h2>
         <!--section that gathers the events' categories and filters the displayed events depending on the selected category -->
-        <section class="categories_buttons">
-            <button type="button" v-on:click="filtersEvents(`Trending`)">TRENDING</button>
-            <button type="button" v-on:click="filtersEvents(`Music`)">MUSIC</button>
-            <button type="button" v-on:click="filtersEvents(`Education`)">EDUCATION</button>
-            <button type="button" v-on:click="filtersEvents(`Sports`)">SPORTS</button>
-            <button type="button" v-on:click="filtersEvents(`Games`)">GAMES</button>
-            <button type="button" v-on:click="filtersEvents(`Travel`)">TRAVEL</button>
-            <button type="button" v-on:click="filtersEvents(`Food`)">FOOD</button>
-            <button type="button" v-on:click="filtersEvents(`Other`)">OTHER</button>
+        <section class="categories_buttons_flex">
+            <button type="button" v-on:click="filtersEvents(`Trending`)" class="categories_buttons">TRENDING</button>
+            <button type="button" v-on:click="filtersEvents(`Music`)" class="categories_buttons">MUSIC</button>
+            <button type="button" v-on:click="filtersEvents(`Education`)" class="categories_buttons">EDUCATION</button>
+            <button type="button" v-on:click="filtersEvents(`Sports`)" class="categories_buttons">SPORTS</button>
+            <button type="button" v-on:click="filtersEvents(`Games`)" class="categories_buttons">GAMES</button>
+            <button type="button" v-on:click="filtersEvents(`Travel`)" class="categories_buttons">TRAVEL</button>
+            <button type="button" v-on:click="filtersEvents(`Food`)" class="categories_buttons">FOOD</button>
+            <button type="button" v-on:click="filtersEvents(`Other`)" class="categories_buttons">OTHER</button>
+            <button type="button" v-on:click="getEvents" class="delete_category">Delete filters</button>
         </section>
         <!--Section which gathers the filters for the displayed events and all the matching events -->
         <section class="events_general_flex">
@@ -24,7 +25,7 @@
                 </div>
                 <!--Div that shows filters to sort the order on which the events are shown -->
                 <div class="my_events_button_score">
-                    <button type="button" v-on:click="bestEvents">Order by SCORE</button>
+                    <button type="button" v-on:click="bestEvents">Order by SCORE</button> 
                 </div>
                 <!--Div only visible for desktop screen sizes, which shows some filters to apply on the displayed events-->
                 <div class="top_padding">
@@ -240,14 +241,14 @@
 
 <style scoped>
 
-    .categories_buttons{
+    .categories_buttons_flex{
         display: flex;
         flex-direction: row;
         justify-content: center;
         flex-wrap: wrap;
     }
 
-    .categories_buttons button{
+    .categories_buttons{
         font-size: 2.5rem;
         background: rgb(208, 221, 238);
         border-radius: 10px;
@@ -261,7 +262,17 @@
         background: rgba(51, 75, 153, 0.829);
         color: white;
         font-weight: bold;
-        
+    }
+
+    .delete_category {
+        color: white;
+        background-color: #7c3838;
+        border-radius: 10px;
+        border: 1px solid rgba(184, 97, 97, 0.32);
+        padding: 10px 8px;
+        margin: 0 10px;
+        font-size: 2.5rem;
+        font-weight: bold;
     }
 
     .events_general_flex{

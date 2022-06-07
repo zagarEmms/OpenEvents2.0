@@ -226,8 +226,6 @@ a {
         display: inline-block;
     }
 
-    
-
     .star-container {
         display: flex;
         align-items: flex-start;

@@ -3,7 +3,8 @@
         <section class="flex_profile">
             <article>
                 <div class="top_padding">
-                    <img class="profile_round" :src="user[0].image" alt="Profile Icon">
+                    <img v-if="user[0].image.includes('https://')" class="profile_round" :src="user[0].image" alt="Profile Icon" width="80">
+                    <img v-if="!user[0].image.includes('https://')" class="profile_round" src="../assets/images/profileImg.jpg" alt="Profile Icon" width="80">                        
                 </div>
                 <div>
                     <h3 class="home_title">{{user[0].name}} {{user[0].last_name}}</h3>
@@ -30,7 +31,6 @@
                         </div>
                         <div class="friend_info">
                             <div><h3 class="black">{{event.name}}</h3></div>
-                            <div><h3 class="black">{{event.type}}</h3></div>
                         </div>
                     </router-link>
                 </div>
@@ -269,7 +269,5 @@ export default {
     width: 10rem;
     padding-right: 2rem;
 }
-
-
 
 </style>

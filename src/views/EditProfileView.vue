@@ -10,8 +10,8 @@
                         <h3>Name</h3>
                         <h3>Surnames</h3>
                         <h3>Email</h3>
-                        <h3>New Password</h3>
-                        <h3>Confirm Password</h3>
+                        <h3>New Password*</h3>
+                        <h3>Confirm Password*</h3>
                     </div>
                     <div class="profile_info_theme_input">
                         <form>
@@ -150,7 +150,7 @@
         width: 200px;
         padding: 1.5rem;
         margin-right: 3rem;
-        margin: 3.5rem 0;
+        margin: 3.5rem 4rem;
     }
 
     .done_button{

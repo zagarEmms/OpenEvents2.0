@@ -25,7 +25,7 @@
             </section>
         </div>
 
-        <div>
+        <div> 
             <section class="friends_flex">
                 <h2>Friend requests</h2>
                 <div v-if="request.length == 0">
