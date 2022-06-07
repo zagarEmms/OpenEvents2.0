@@ -12,9 +12,9 @@
                     <router-link to="/friendProfile" v-on:click="saveFriendId(search.id)">
                         <article class="friends_flex_info">
                             <div><img class="friends_profile_img" :src="search.image" alt="Profile Icon"></div>
-                            <div>
-                                <div class="friend_info"><h3 class="black">{{search.name}} {{search.last_name}}</h3></div>
-                                <div class="friend_info"><h3 class="black">{{search.email}}</h3></div>
+                            <div class="friend_info">
+                                <div><h3 class="black">{{search.name}} {{search.last_name}}</h3></div>
+                                <div><h3 class="black">{{search.email}}</h3></div>
                             </div>
                         </article>
                     </router-link>
@@ -32,9 +32,9 @@
                     <router-link to="/friendProfile" v-on:click="saveFriendId(friend.id)">
                         <article class="friends_flex_info">
                             <div><img class="friends_profile_img" :src="request.image" alt="Profile Icon"></div>
-                            <div>
-                                <div class="friend_info"><h3 class="black">{{request.name}} {{request.last_name}}</h3></div>
-                                <div class="friend_info"><h3 class="black">{{request.email}}</h3></div>
+                            <div class="friend_info">
+                                <div><h3 class="black">{{request.name}} {{request.last_name}}</h3></div>
+                                <div><h3 class="black">{{request.email}}</h3></div>
                             </div>
                         </article>
                     </router-link>
@@ -54,9 +54,9 @@
                     <router-link to="/friendProfile" v-on:click="saveFriendId(friend.id)">
                         <article class="friends_flex_info">
                             <div><img class="friends_profile_img" :src="friend.image" alt="Profile Icon"></div>
-                            <div>
-                                <div class="friend_info"><h3 class="black">{{friend.name}} {{friend.last_name}}</h3></div>
-                                <div class="friend_info"><h3 class="black">{{friend.email}}</h3></div>
+                            <div class="friend_info">
+                                <div><h3 class="black">{{friend.name}} {{friend.last_name}}</h3></div>
+                                <div><h3 class="black">{{friend.email}}</h3></div>
                             </div>
                         </article>
                     </router-link>
@@ -72,8 +72,8 @@
                         <article class="friends_flex_info">
                             <div><img class="friends_profile_img" :src="user.image" alt="Profile Icon"></div>
                             <div class="friend_info">
-                                <h3 class="friend_info black">{{user.name}} {{user.last_name}}</h3>
-                                <h3 class="friend_info black">{{user.email}}</h3>
+                                <div><h3 class="black">{{user.name}} {{user.last_name}}</h3></div>
+                                <div><h3 class="black">{{user.email}}</h3></div>
                             </div>
                         </article>
                     </router-link>
@@ -285,10 +285,9 @@
         width: 10rem;
     }   
 
-    .friend_info {
+    .friend_info div {
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
         padding: 0 1rem;
     }
 

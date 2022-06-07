@@ -11,6 +11,7 @@
                         <h3>Surnames</h3>
                         <h3>Email</h3>
                         <h3>Password</h3>
+                        <h3>Password</h3>
                     </div>
                     <div class="profile_info_theme_input">
                         <form>
@@ -89,9 +90,6 @@
                     user.email = this.userEmail;
                 } 
 
-                console.log(this.userPassword);
-                console.log(this.userPasswordCheck);
-
                 if (this.userPassword != undefined && this.userPasswordCheck != undefined && this.userPassword == this.userPasswordCheck) {
                     user.password = this.userPassword
 
@@ -133,10 +131,8 @@
     }
 
     .flex_profile_info {
-        width: 70rem;
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
     }
 
     .flex_profile_info div {
@@ -145,17 +141,18 @@
 
     .profile_info_theme h3 {
         justify-items: center;
-        padding-bottom: 1.5rem;
-        padding-top: 1.5rem;
     }
 
-    .profile_info_theme_input h3 {
+    .profile_info_theme_input form input {
+        display: flex;
+        flex-direction: row;
         color: #0c2341;
         border: solid 0.2rem #5b5a5a;
-        padding: 1.5rem;
         border-radius: 1rem;
         font-weight: lighter;
         width: 200px;
+        padding: 1.5rem;
+        margin-left: 2rem;
     }
     .done_button{
         border: none;
