@@ -226,37 +226,6 @@ a {
         display: inline-block;
     }
 
-    .star-container {
-        display: flex;
-        align-items: flex-start;
-        flex-direction: row;
-    }
-
-    .star:before {
-        content: "\f005";
-        font-family: fontAwesome;
-        font-size: 30px;
-        position: relative;
-        display: block;
-        color: #aaa;
-    }
-
-    .star:after {
-        content: "\f005";
-        font-family: fontAwesome;
-        top: 7px;
-        font-size: 30px;
-        color: gold;
-        opacity: 0;
-    }
-
-    .star:hover:after,
-    .star:hover ~ .star:after,
-    .star.star__checked:after,
-    .star.star__checked ~ .star:after{
-        opacity: 1;
-    }
-
     .users_profile {
         font-size: 5rem;
         color: #0c2341;
