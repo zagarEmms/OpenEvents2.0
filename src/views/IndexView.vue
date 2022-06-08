@@ -4,7 +4,7 @@
     <section class="backgroundImg">
         <article class="flex_login">
             <!--H1 for the main title of the html (the name of the website)-->
-            <h1 id="mainTitle">OpenEvents</h1>
+            <h1 class="white">OpenEvents</h1>
         </article>
         <article class="flex_login">
             <!--Form containing user inputs, wrapped together to send the information at the same time-->
@@ -137,6 +137,7 @@
 </script>
 
 <style scoped>
+
     .container_index {
         padding: 0;
         width: 98%;
